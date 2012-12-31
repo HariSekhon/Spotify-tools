@@ -30,7 +30,7 @@ Running the cpan before each module name as root will fetch them:
 
 ```cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple```
 
-Now you`re ready to go
+Now you're ready to go
 
 ### Usage ###
 
@@ -61,7 +61,7 @@ echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./spotify-lookup.pl
 Foo Fighters - Arlandria
 ```
 
-Use verbose mode to print the the URIs to STDERR, so you can send the tracks to a file while still seeing the output in the terminal
+Use verbose mode to print the the URIs to STDERR, so you can send the tracks to a file while still seeing the progress in your terminal
 
 ```
 ./spotify-lookup.pl -v Pendulum_Spotify.txt > Pendulum_Tracks.txt
@@ -81,9 +81,9 @@ retries:       3
 Summary:         42 tracks, 0 local tracks, 42 spotify tracks fetched in 8.6640 secs
 Completion Date: Mon Dec 31 15:38:44 GMT 2012
 ```
-The track names are then stored in Pendulum_Tracks.txt. On large playlists you`ll want to see this progress. Also it looks cool when it`s running :)
+The track names are then stored in Pendulum_Tracks.txt. On large playlists you'll want to see this progress. Also it looks cool when it's running :)
 
-The mode I use the most is to translate a list of Spotify URI files I`ve dumped to another directory, keeping the file names the same and you get a nice total progress listing how many tracks of the current playlist file and how many overall are completed, followed by a total summary at the end.
+The mode I use the most is to translate a list of Spotify URI files I've dumped to another directory, keeping the file names the same and you get a nice total progress listing how many tracks of the current playlist file and how many overall are completed, followed by a total summary at the end.
 ```
 spotify-lookup.pl -v -w music spotify/Pendulum spotify/Foo_Fighters
 verbose mode on
