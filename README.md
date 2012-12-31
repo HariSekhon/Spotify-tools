@@ -81,7 +81,7 @@ retries:       3
 Summary:         42 tracks, 0 local tracks, 42 spotify tracks fetched in 8.6640 secs
 Completion Date: Mon Dec 31 15:38:44 GMT 2012
 ```
-The track names are then stored in Pendulum_Tracks.txt. On large playlists you`ll want to see this progress. Also it looks cool :)
+The track names are then stored in Pendulum_Tracks.txt. On large playlists you`ll want to see this progress. Also it looks cool when it`s running :)
 
 The mode I use the most is to translate a list of Spotify URI files I`ve dumped to another directory, keeping the file names the same and you get a nice total progress listing how many tracks of the current playlist file and how many overall are completed, followed by a total summary at the end.
 ```
