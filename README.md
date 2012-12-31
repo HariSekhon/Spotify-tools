@@ -4,8 +4,8 @@ spotify-lookup
 Spotify Lookup converts Spotify URIs to "Artist - Track" form using the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
 
 
+### Setup ###
 The first thing you need to do is to get my library submodule since I share code between this and other things that I have written over the years.
-
 
 Enter the directory and run git submodule init and git submodule update to fetch my library repo:
 
@@ -81,29 +81,29 @@ Completion Date: Mon Dec 31 15:38:44 GMT 2012
 ```
 The track names are then stored in Pendulum_Tracks.txt. On large playlists you`ll want to see the progress. This is the mode I use most often with the -w switch to see totals
 ```
-spotify-lookup.pl -v -w . spotify/Pendulum spotify/Foo_Fighters
+spotify-lookup.pl -v -w music spotify/Pendulum spotify/Foo_Fighters
 verbose mode on
 verbose level: 1
 files:         spotify/Pendulum spotify/Foo_Fighters
-write dir:     /Users/hari/.../music
+write dir:     /Users/hari/music
 speed up:      x1
 retries:       3
 
 file: 'spotify/Pendulum'
-write file: '/Users/hari/.../music/Pendulum'
+write file: '/Users/hari/music/Pendulum'
 1/42 1/53 spotify/Pendulum http://ws.spotify.com/lookup/1/?uri=spotify:track:61oGXsKgJOI0e3uS2wg1BV => 0.1511 secs
 2/42 2/53 spotify/Pendulum http://ws.spotify.com/lookup/1/?uri=spotify:track:1j6API7GnhE8MRRedK4bda => 0.0520 secs
 3/42 3/53 spotify/Pendulum http://ws.spotify.com/lookup/1/?uri=spotify:track:0RxFoUhB3mAI3qpgLSf7eM => 0.0507 secs
 42/42 42/53 spotify/Pendulum http://ws.spotify.com/lookup/1/?uri=spotify:track:6gTQubOSdry0ievEXvhzxd => 0.1757 secs
-Wrote: /Users/hari/.../music/Pendulum
+Wrote: /Users/hari/music/Pendulum
 
 file: 'spotify/Foo_Fighters'
-write file: '/Users/hari/.../music/Foo_Fighters'
+write file: '/Users/hari/music/Foo_Fighters'
 1/11 43/53 spotify/Foo_Fighters http://ws.spotify.com/lookup/1/?uri=spotify:track:042RaY48TNY9aesv8fqYTf => 0.0606 secs
 2/11 44/53 spotify/Foo_Fighters http://ws.spotify.com/lookup/1/?uri=spotify:track:0mWiuXuLAJ3Brin3Or2x6v => 0.0787 secs
 ...
 11/11 53/53 spotify/Foo_Fighters http://ws.spotify.com/lookup/1/?uri=spotify:track:7v0mtl6oInUtHOmTk2b0gC => 0.0594 secs
-Wrote: /Users/hari/.../music/Foo_Fighters
+Wrote: /Users/hari/music/Foo_Fighters
 
 
 Summary:         53 tracks, 0 local tracks, 53 spotify tracks fetched in 5.6081 secs   
