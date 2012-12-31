@@ -11,9 +11,11 @@ Enter the directory and run git submodule init and git submodule update to fetch
 
 ```
 cd spotify-lookup
-
+```
+```
 git submodule init
-
+```
+```
 git submodule update
 ```
 
