@@ -21,10 +21,10 @@ git submodule update
 
 You will also need to fetch the following CPAN modules:
 
-LWP::Simple
-Text::Unidecode
-URI::Escape
-XML::Simple
+LWP::Simple  
+Text::Unidecode  
+URI::Escape  
+XML::Simple  
 
 Running the cpan before each module name as root will fetch them:
 
