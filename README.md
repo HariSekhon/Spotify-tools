@@ -59,7 +59,7 @@ echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./spotify-lookup.pl
 Foo Fighters - Arlandria
 ```
 
-The most useful mode I like to use a lot is translate and revision control my playlists while also seeing progress using the first verbose level (-v switch):
+Use verbose mode to print the the URIs to STDERR, so you can send the tracks to a file while still seeing the output in the terminal
 
 ```
 ./spotify-lookup.pl -v Pendulum_Spotify.txt > Pendulum_Tracks.txt
@@ -79,7 +79,9 @@ retries:       3
 Summary:         42 tracks, 0 local tracks, 42 spotify tracks fetched in 8.6640 secs
 Completion Date: Mon Dec 31 15:38:44 GMT 2012
 ```
-The track names are then stored in Pendulum_Tracks.txt. On large playlists you`ll want to see the progress. This is the mode I use most often with the -w switch to see totals
+The track names are then stored in Pendulum_Tracks.txt. On large playlists you`ll want to see this progress. Also it looks cool :)
+
+The mode I use the most is to translate a list of Spotify URI files I`ve dumped to another directory, keeping the file names the same and you get a nice total progress listing how many tracks of the current playlist file and how many overall are completed, followed by a total summary at the end.
 ```
 spotify-lookup.pl -v -w music spotify/Pendulum spotify/Foo_Fighters
 verbose mode on
