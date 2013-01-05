@@ -10,7 +10,7 @@
 #
 #  vim:ts=4:sw=4:et
 
-$VERSION = "0.8.4";
+$VERSION = "0.8.5";
 
 use strict;
 use warnings;
@@ -33,11 +33,8 @@ autoflush();
 $ua->agent("Hari Sekhon $progname version $main::VERSION");
 $ua->timeout(30);
 
-# TODO: never worked, fix later
-#$HariSekhonUtils::default_timeout = 3600;
-#$default_timeout = 300;
-#debug "default_timeout = $default_timeout\n";
-#debug "HariSekhonUtils::default_timeout = $HariSekhonUtils::default_timeout\n";
+set_timeout_max(7200);
+set_timeout_default(3600);
 my $default_retries = 3;
 my $no_locking;
 my $file;
@@ -52,20 +49,19 @@ my $sort = 0;
     "w|write-dir=s" => [ \$write_dir, "Write to file of same name in directory path given as argument (cannot be the same as the source directory)" ],
     "s|speed-up=i"  => [ \$speed_up,  "Speeds up by reducing default sleep between lookups (0.1 secs) by this factor, useful if you're beind a pool of DIPs at work ;)" ],
     "n|no-locking"  => [ \$no_locking, "Do not lock, allow more than 1 copy of this program to run at a time. This could get you blocked by Spotify's rate limiting on their metadata API. Use with caution, only if you are behind a network setup that gives you multiple IP addresses" ],
+    #"timeout-per-request=i" => [ \$timeout_per_request, "Timeout per request to the spotify API" ],
     "sort"          => [ \$sort,      "Sort the resulting file (only used with --write-dir)" ],
 );
-# TODO: solve timeout 10 secs not respecting $default_timeout being set above
-#delete($HariSekhonUtils::options2{"t|timeout=i"});
-#%main::options2 = %options2;
-#$options2{"t|timeout=i"} = [ \$timeout, "Unutilized. There is 30 second timeout on each request to Spotify" ];
-#print "$main::options2{'t|timeout=i'}\n";
 @usage_order = qw/file retries write-dir speed-up/;
 
-# tried calling from main context and switching all usage calls in lib to main::usage() but no help
-#main::get_options();
+#$HariSekhonUtils::default_options{"t|timeout=i"} = [ \$timeout, "Unutilized. There is 30 second timeout on each track translation request to the Spotify API" ];
+$HariSekhonUtils::default_options{"t|timeout=i"} = [ \$timeout, $HariSekhonUtils::default_options{"t|timeout=i"}[1] . ". There is also 30 second timeout on each track translation request to the Spotify API" ];
+
 get_options();
 
 go_flock_yourself() unless $no_locking;
+
+set_timeout();
 
 $speed_up = 1 unless $speed_up;
 
