@@ -10,6 +10,8 @@
 #
 #  vim:ts=4:sw=4:et
 
+$DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
+
 $VERSION = "0.8.5";
 
 use strict;
