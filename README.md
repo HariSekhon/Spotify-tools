@@ -5,7 +5,7 @@ Spotify Lookup converts Spotify URIs to "Artist - Track" form using the Spotify 
 
 
 ### Setup ###
-This fetches my library submodule and a few cpan modules. If you have make just type this:
+This fetches my library submodule and a few cpan modules. Type:
 
 ```
 cd spotify
@@ -14,7 +14,7 @@ cd spotify
 make
 ```
 
-Alternatively run the setup manually, it's quite simple
+Alternatively to run the setup manually if you don't have GNU Make installed, it's quite simple
 
 
 ### Manual Setup ###
