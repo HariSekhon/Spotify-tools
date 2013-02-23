@@ -5,7 +5,18 @@ Spotify Lookup converts Spotify URIs to "Artist - Track" form using the Spotify 
 
 
 ### Setup ###
-The first thing you need to do is to get my library submodule since I share code between this and other things that I have written over the years.
+You need to import my library submodule since I share code between this and other things that I have written over the years as well as a few cpan modules for perl.
+
+If you have make you can just type
+
+```
+cd spotify
+```
+```
+make
+```
+
+and then you'll be good to go. Manual instructions are below:
 
 Enter the directory and run git submodule init and git submodule update to fetch my library repo:
 
