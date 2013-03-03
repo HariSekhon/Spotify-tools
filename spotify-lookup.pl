@@ -35,8 +35,8 @@ autoflush();
 $ua->agent("Hari Sekhon $progname version $main::VERSION");
 $ua->timeout(30);
 
-set_timeout_max(7200);
-set_timeout_default(3600);
+set_timeout_max(86400);
+set_timeout_default(10000);
 my $default_retries = 3;
 my $no_locking;
 my $file;
