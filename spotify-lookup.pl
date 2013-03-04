@@ -81,7 +81,7 @@ foreach(@ARGV){
 foreach(@files){
     ( $_ and not -f $_ ) and die "Error: couldn't find file '$_'\n";
 }
-( $retries >= 1 and $retries <= 20 ) or usage "Must specify retries between 1 and 20\n";
+( $retries >= 1 and $retries <= 100 ) or usage "Must specify retries between 1 and 100\n";
 if($write_dir){
     $write_dir = abs_path($write_dir);
     if(@files){
