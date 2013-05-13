@@ -12,7 +12,7 @@
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.8.5";
+$VERSION = "0.8.6";
 
 use strict;
 use warnings;
@@ -44,6 +44,7 @@ my $write_dir;
 my $retries = $default_retries;
 my $speed_up = 1;
 my $sort = 0;
+my $wait = 0;
 
 %options = (
     "f|file=s"      => [ \$file,      "File name(s) containing the spotify URLs" ],
@@ -53,15 +54,16 @@ my $sort = 0;
     "n|no-locking"  => [ \$no_locking, "Do not lock, allow more than 1 copy of this program to run at a time. This could get you blocked by Spotify's rate limiting on their metadata API. Use with caution, only if you are behind a network setup that gives you multiple IP addresses" ],
     #"timeout-per-request=i" => [ \$timeout_per_request, "Timeout per request to the spotify API" ],
     "sort"          => [ \$sort,      "Sort the resulting file (only used with --write-dir)" ],
+    "wait"          => [ \$wait,      "Wait to acquire spotify lock instead of exiting" ],
 );
-@usage_order = qw/file retries write-dir speed-up/;
+@usage_order = qw/file retries write-dir speed-up no-locking sort wait/;
 
 #$HariSekhonUtils::default_options{"t|timeout=i"} = [ \$timeout, "Unutilized. There is 30 second timeout on each track translation request to the Spotify API" ];
 $HariSekhonUtils::default_options{"t|timeout=i"} = [ \$timeout, $HariSekhonUtils::default_options{"t|timeout=i"}[1] . ". There is also 30 second timeout on each track translation request to the Spotify API" ];
 
 get_options();
 
-go_flock_yourself() unless $no_locking;
+go_flock_yourself(undef, $wait) unless $no_locking;
 
 set_timeout();
 
