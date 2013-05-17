@@ -37,7 +37,7 @@ $ua->timeout(30);
 
 set_timeout_max(86400);
 set_timeout_default(10000);
-my $default_retries = 3;
+my $default_retries = 5;
 my $no_locking;
 my $file;
 my $write_dir;
