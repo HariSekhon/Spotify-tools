@@ -12,7 +12,7 @@
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.8.6";
+$VERSION = "0.8.7";
 
 use strict;
 use warnings;
@@ -37,6 +37,7 @@ $ua->timeout(30);
 
 set_timeout_max(86400);
 set_timeout_default(10000);
+my $album = 0;
 my $default_retries = 5;
 my $no_locking;
 my $file;
@@ -48,6 +49,7 @@ my $wait = 0;
 
 %options = (
     "f|file=s"      => [ \$file,      "File name(s) containing the spotify URLs" ],
+    "a|album"       => [ \$album,     "Print Album name at end of track [Album:<name>]" ],
     "r|retries=i"   => [ \$retries,   "Number of retires (defaults to $default_retries)" ],
     "w|write-dir=s" => [ \$write_dir, "Write to file of same name in directory path given as argument (cannot be the same as the source directory)" ],
     "s|speed-up=i"  => [ \$speed_up,  "Speeds up by reducing default sleep between lookups (0.1 secs) by this factor, useful if you're beind a pool of DIPs at work ;)" ],
@@ -258,11 +260,13 @@ sub spotify_lookup {
         $artists .= "${$_}{name}[0],"
     }
     $artists =~ s/,$//;
-    #if($write_fh){
-        #print $write_fh unidecode("$artists - " . $data->{name}[0] . "\n");
-    #} else {
-        print unidecode("$artists - " . $data->{name}[0] . "\n") unless $retry;
-    #}
+    unless($retry){
+        my $track = "$artists - " . $data->{name}[0];
+        if($album){
+            $track .= " [Album:" . $data->{album}[0]{name}[0] . "]";
+        }
+        print unidecode("$track\n");
+    }
     vlog3("fetched in $time_taken secs");
     if($actual_sleep > 0){
         vlog3("sleeping for $actual_sleep secs");
