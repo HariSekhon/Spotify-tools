@@ -12,7 +12,7 @@
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.8.7";
+$VERSION = "0.8.8";
 
 use strict;
 use warnings;
@@ -211,7 +211,7 @@ sub spotify_lookup {
     if($uri =~ /[\/:]track[\/:](.+)$/){
         $track = "spotify:track:$1";
         $spotify_tracks++ unless $retry;
-    } elsif($uri =~ /\/local\/(.*)\/.*\/(.*)\/\d+$/) {
+    } elsif($uri =~ /[\/:]local[\/:](.*)[\/:].*[\/:](.*)[\/:]\d+$/) {
         $track = $2;
         $track = "$1 - $2" if $1;
         $local_tracks++;
