@@ -12,7 +12,7 @@
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.8.8";
+$VERSION = "0.9";
 
 use strict;
 use warnings;
@@ -46,10 +46,14 @@ my $retries = $default_retries;
 my $speed_up = 1;
 my $sort = 0;
 my $wait = 0;
+my $territory = "";
+my $local_track = 0;
 
 %options = (
     "f|file=s"      => [ \$file,      "File name(s) containing the spotify URLs" ],
     "a|album"       => [ \$album,     "Print Album name at end of track [Album:<name>]" ],
+    "territory=s"   => [ \$territory, "Give a 2 letter territory code to suffix tracks that aren't available in that territory with '(Unavailable in GB)'" ],
+    "mark-local"    => [ \$local_track, "Suffix local tracks with '(Local Track)'" ],
     "r|retries=i"   => [ \$retries,   "Number of retires (defaults to $default_retries)" ],
     "w|write-dir=s" => [ \$write_dir, "Write to file of same name in directory path given as argument (cannot be the same as the source directory)" ],
     "s|speed-up=i"  => [ \$speed_up,  "Speeds up by reducing default sleep between lookups (0.1 secs) by this factor, useful if you're beind a pool of DIPs at work ;)" ],
@@ -58,12 +62,17 @@ my $wait = 0;
     "sort"          => [ \$sort,      "Sort the resulting file (only used with --write-dir)" ],
     "wait"          => [ \$wait,      "Wait to acquire spotify lock instead of exiting" ],
 );
-@usage_order = qw/file retries write-dir speed-up no-locking sort wait/;
+@usage_order = qw/file album territory mark-local retries write-dir speed-up no-locking sort wait/;
 
 #$HariSekhonUtils::default_options{"t|timeout=i"} = [ \$timeout, "Unutilized. There is 30 second timeout on each track translation request to the Spotify API" ];
 $HariSekhonUtils::default_options{"t|timeout=i"} = [ \$timeout, $HariSekhonUtils::default_options{"t|timeout=i"}[1] . ". There is also 30 second timeout on each track translation request to the Spotify API" ];
 
 get_options();
+
+if($territory){
+    $territory =~ /^[A-Za-z]{2}$/ or usage "territory must be a two letter country code";
+    $territory = uc $territory;
+}
 
 go_flock_yourself(undef, $wait) unless $no_locking;
 
@@ -203,26 +212,30 @@ sub spotify_lookup {
     my $count = ($_[1] or 1);
     my $retry = ($_[2] or 0);
     my $track;
+    my $album_name;
     chomp $uri;
     $uri =~ s/#.*//;
     $uri = trim($uri);
     return (0,0) unless $uri;
     $total_tracks++ unless $retry;
-    if($uri =~ /[\/:]track[\/:](.+)$/){
-        $track = "spotify:track:$1";
+    if($uri =~ /([\/:])track\1(.+)$/){
+        $track = "spotify:track:$2";
         $spotify_tracks++ unless $retry;
-    } elsif($uri =~ /[\/:]local[\/:](.*)[\/:].*[\/:](.*)[\/:]\d+$/) {
-        $track = $2;
-        $track = "$1 - $2" if $1;
+    } elsif($uri =~ /([\/:])local\1(.*)\1(.*)\1(.*)\1\d+$/) {
+        $track = $4;
+        $track = "$2 - $4" if $2;
+        $album_name = $3 || "";
         $local_tracks++;
         $track = uri_unescape($track);
         $track =~ s/\+/ /g;
         print STDERR "*local track, skipping lookup ($track)\n" if $verbose;
-        #if($write_fh){
-        #    print $write_fh unidecode("$track\n");
-        #} else {
-            print unidecode("$track\n");
-        #}
+        if($album){
+            $track .= " [Album:" . uri_unescape($album_name) . "]";
+        }
+        if($local_track){
+            $track .= ' (Local Track)';
+        }
+        print unidecode("$track\n");
         return 1;
     } else {
         die "Invalid URI given: $uri\n";
@@ -264,6 +277,15 @@ sub spotify_lookup {
         my $track = "$artists - " . $data->{name}[0];
         if($album){
             $track .= " [Album:" . $data->{album}[0]{name}[0] . "]";
+        }
+        if($territory){
+            if(defined($data->{album}[0]{availability}[0]{territories}[0])){
+                unless($data->{album}[0]{availability}[0]{territories}[0] =~ /\b$territory\b/){
+                    $track .= " (Unavailable in $territory)";
+                }
+            } else {
+                print STDERR "WARNING: territories not found for $track";
+            }
         }
         print unidecode("$track\n");
     }
