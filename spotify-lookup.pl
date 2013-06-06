@@ -12,7 +12,7 @@
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.9";
+$VERSION = "0.9.1";
 
 use strict;
 use warnings;
@@ -52,7 +52,7 @@ my $local_track = 0;
 %options = (
     "f|file=s"      => [ \$file,      "File name(s) containing the spotify URLs" ],
     "a|album"       => [ \$album,     "Print Album name at end of track [Album:<name>]" ],
-    "territory=s"   => [ \$territory, "Give a 2 letter territory code to suffix tracks that aren't available in that territory with '(Unavailable in GB)'" ],
+    "territory=s"   => [ \$territory, "Give a 2 letter territory code to suffix tracks that aren't available in that territory with '(Unavailable in GB)'. I've found this to be unreliable information from Spotify, not currently recommended" ],
     "mark-local"    => [ \$local_track, "Suffix local tracks with '(Local Track)'" ],
     "r|retries=i"   => [ \$retries,   "Number of retires (defaults to $default_retries)" ],
     "w|write-dir=s" => [ \$write_dir, "Write to file of same name in directory path given as argument (cannot be the same as the source directory)" ],
@@ -279,12 +279,14 @@ sub spotify_lookup {
             $track .= " [Album:" . $data->{album}[0]{name}[0] . "]";
         }
         if($territory){
-            if(defined($data->{album}[0]{availability}[0]{territories}[0])){
+            if(defined($data->{album}[0]{availability}[0]{territories}[0])){ #and isScalar($data->{album}[0]{availability}[0]{territories}[0]) and $data->{album}[0]{availability}[0]{territories}[0] !~ /^\s*$/){
                 unless($data->{album}[0]{availability}[0]{territories}[0] =~ /\b$territory\b/){
                     $track .= " (Unavailable in $territory)";
                 }
             } else {
-                print STDERR "WARNING: territories not found for $track";
+                # Sometimes territories aren't there eg Micahel Jackson - Thriller. I assume this mean it's all territories since it obviously works here in UK
+                # But others which are unavailable are also with <territories/>
+                print STDERR "WARNING: territories not found for $track\n";
             }
         }
         print unidecode("$track\n");
