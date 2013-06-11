@@ -12,7 +12,7 @@
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.9.1";
+$VERSION = "0.9.2";
 
 use strict;
 use warnings;
@@ -278,14 +278,21 @@ sub spotify_lookup {
         if($album){
             $track .= " [Album:" . $data->{album}[0]{name}[0] . "]";
         }
-        if($territory){
-            if(defined($data->{album}[0]{availability}[0]{territories}[0])){ #and isScalar($data->{album}[0]{availability}[0]{territories}[0]) and $data->{album}[0]{availability}[0]{territories}[0] !~ /^\s*$/){
-                unless($data->{album}[0]{availability}[0]{territories}[0] =~ /\b$territory\b/){
-                    $track .= " (Unavailable in $territory)";
+        if($data->{available} =~ /^true$/i){
+            $track .= " (Unavailable)";
+        } elsif($territory){
+            if(defined($data->{album}[0]{availability}[0]{territories}[0])){
+                # Sometimes territories aren't there eg Micahel Jackson - Thriller. I assume this mean it's all territories since it obviously works here in UK
+                # But others marked available but have in fact unavailable with <territories/>
+                # eg Lenny Fontana & Ridney pres. Larisa - Wait 4 U - Full Radio Edit => http://open.spotify.com/track/3HM5d7pAIGhyPFXO30rJGI
+                # So this is an unreliable check right now since the metadata from Spotify isn't consistent
+                # therefore I can't definitely infer availability, so the above example WAit 4 U won't be marked as Unavailable in the output
+                if(isScalar($data->{album}[0]{availability}[0]{territories}[0]) and $data->{album}[0]{availability}[0]{territories}[0] !~ /^\s*$/){
+                    unless($data->{album}[0]{availability}[0]{territories}[0] =~ /\b$territory\b/){
+                        $track .= " (Unavailable in $territory)";
+                    }
                 }
             } else {
-                # Sometimes territories aren't there eg Micahel Jackson - Thriller. I assume this mean it's all territories since it obviously works here in UK
-                # But others which are unavailable are also with <territories/>
                 print STDERR "WARNING: territories not found for $track\n";
             }
         }
