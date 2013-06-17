@@ -29,8 +29,9 @@ cmds:
 play            Play
 pause / stop    Pause
 playpause       Toggle Play/Pause
-previous        Previous Track
-next [secs]     Next Track. Specifying optional secs will skip to next track
+previous        Previous Track and print previous track information
+next [secs]     Next Track and print next track information.
+                Specifying optional secs will skip to next track
                 every [secs] seconds. Handy for skipping through a playlist
                 every 60 secs automatically and grabbing the good songs. Prints
                 track information every time it skips to the next track
@@ -42,6 +43,11 @@ vol down        Turn volume down
 vol <1-100>     Set volume to number <1-100>
 
 exit / quit     Exit Spotify";
+
+my $quiet;
+%options = (
+    "q|quiet"   => [ \$quiet, "Quiet mode. Do not print track information or volume after completing action" ],
+);
 
 get_options();
 
@@ -106,26 +112,33 @@ sub print_state(){
     }
 }
 
+sub get_vol(){
+    my $current_vol = `$cmdline sound volume as integer'`;
+    $current_vol =~ /^(\d+)$/ || die "failed to determine current volume\n";
+    return $1;
+}
 
 if($cmd eq "status"){
+    print_state();
 } elsif($cmd eq "vol"){
     my $new_vol;
     if($arg eq "up" or $arg eq "down"){
-        my $current_vol = `$cmdline sound volume as integer'`;
-        $current_vol =~ /^(\d+)$/ || die "failed to determine current volume\n";
-        $current_vol = $1;
+        my $current_vol = get_vol();
+        vlog "Old Volume: $current_vol" unless $quiet;
         if($arg eq "up"){
             $new_vol = $current_vol + 10;
         } elsif($arg eq "down"){
             $new_vol = $current_vol - 10;
         }
     } elsif(isInt($arg)){
-        ($arg < 0 or $arg > 100) and usage "volume must be between 0 and 100";
         $new_vol = $arg;
     } else {
         usage "vol arg must be one of up/down/<num>";
     }
-    system($cmdline . "set sound volume to $new_vol'");
+    $new_vol = 0 if $new_vol < 0;
+    $new_vol = 100 if $new_vol > 100;
+    print cmd($cmdline . "set sound volume to $new_vol'");
+    print "Volume: " . get_vol() . "%\n" unless $quiet;
 } else {
     if(grep $cmd, keys %cmds){
         my $cmdline2 = "$cmdline $cmds{$cmd}'";
@@ -136,14 +149,14 @@ if($cmd eq "status"){
                 print "\n";
                 set_timeout();
                 print cmd($cmdline2);
-                print_state();
+                print_state() unless $quiet;
                 alarm 0;
                 sleep $arg;
             }
         } elsif($cmd eq "prev" or
                 $cmd eq "next"){
             print cmd($cmdline2);
-            print_state();
+            print_state() unless $quiet;
         } else {
             print cmd($cmdline2);
         }
