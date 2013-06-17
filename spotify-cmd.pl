@@ -20,7 +20,7 @@ BEGIN {
     use File::Basename;
     use lib dirname(__FILE__) . "/lib";
 }
-use HariSekhonUtils;
+use HariSekhonUtils qw/:DEFAULT :time/;
 
 $usage_line = "$progname <cmd>
 
@@ -80,19 +80,21 @@ my @output;
 
 if($cmd eq "status"){
     my %state;
-    $state{"status"}     = `$cmdline player state as string'`                   || die "failed to get Spotify status\n";
-    $state{"artist"}     = `$cmdline artist of current track as string'`        || die "failed to get current artist\n";
-    $state{"album"}      = `$cmdline album of current track as string'`         || die "failed to get current album\n";
-    $state{"starred"}    = `$cmdline starred of current track as string'`       || die "failed to get current starred status\n";
-    $state{"track"}      = `$cmdline name of current track as string'`          || die "failed to get current track\n";
-    $state{"duration"}   = `$cmdline duration of current track as string'`      || die "failed to get duration of current track\n";
-    $state{"popularity"} = `$cmdline popularity of current track as string'`    || die "failed to get popularity of current track\n";
-    if($state{"duration"}){
-        $state{"duration"} = int($state{"duration"} / 60) . ":" . $state{"duration"} % 60 . "\n";
-    }
-    foreach(qw/status starred artist album track duration popularity/){
+    # TODO: make this more efficient, return all at once if possible, check on this later
+    $state{"status"}       = `$cmdline player state as string'`                     || die "failed to get Spotify status\n";
+    $state{"artist"}       = `$cmdline artist of current track as string'`          || die "failed to get current artist\n";
+    $state{"album"}        = `$cmdline album of current track as string'`           || die "failed to get current album\n";
+    $state{"starred"}      = `$cmdline starred of current track as string'`         || die "failed to get current starred status\n";
+    $state{"track"}        = `$cmdline name of current track as string'`            || die "failed to get current track\n";
+    $state{"duration"}     = `$cmdline duration of current track as string'`        || die "failed to get duration of current track\n";
+    $state{"position"}     = `$cmdline player position as string'` || die "failed to get position of current track\n";
+    $state{"popularity"}   = `$cmdline popularity of current track as string'`      || die "failed to get popularity of current track\n";
+    $state{"played count"} = `$cmdline played count of current track as string'`    || die "failed to get played count of current track\n";
+    $state{"duration"} = sec2min($state{"duration"}) . "\n" if $state{"duration"};
+    $state{"position"} = sec2min($state{"position"}) . "\n" if $state{"position"};
+    foreach((qw/status starred artist album track duration position popularity/, "played count")){
         $state{$_} = "Unknown (external track?)\n" unless $state{$_};
-        printf "%-12s %s", ucfirst "$_:", $state{$_};
+        printf "%-12s %s", ucfirst("$_:"), $state{$_};
     }
 } elsif($cmd eq "vol"){
     my $new_vol;
