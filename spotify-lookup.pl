@@ -2,13 +2,11 @@
 #
 #   Author: Hari Sekhon
 #   Date: 2012-04-06 21:01:42 +0100 (Fri, 06 Apr 2012)
-#  $LastChangedBy$
-#  $LastChangedDate$
-#  $Revision$
-#  $URL$
-#  $Id$
 #
-#  vim:ts=4:sw=4:et
+#  http://github.com/harisekhon
+#
+#  License: see accompanying LICENSE file
+#
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
