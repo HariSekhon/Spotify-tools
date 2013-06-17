@@ -38,7 +38,6 @@ vol up          Turn volume up
 vol down        Turn volume down
 vol <1-100>     Set volume to number <1-100>
 
-start           Start Spotify
 exit / quit     Exit Spotify";
 
 get_options();
