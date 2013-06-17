@@ -57,10 +57,6 @@ my $arg = $ARGV[1] if $ARGV[1];
 $cmd = lc $cmd;
 $arg = lc $arg if $arg;
 
-if($cmd eq "vol"){
-    defined($arg) or usage;
-}
-
 mac_only();
 
 $cmd = isAlNum($cmd) || usage "invalid cmd";
@@ -85,7 +81,6 @@ set_timeout();
 my $osascript = which("osascript");
 my $spotify_app = "Spotify";
 my $cmdline = "$osascript -e 'tell applications \"$spotify_app\" to ";
-
 
 my %state;
 sub get_state(){
@@ -122,18 +117,23 @@ if($cmd eq "status"){
     print_state();
 } elsif($cmd eq "vol"){
     my $new_vol;
-    if($arg eq "up" or $arg eq "down"){
-        my $current_vol = get_vol();
-        vlog "Old Volume: $current_vol" unless $quiet;
-        if($arg eq "up"){
-            $new_vol = $current_vol + 10;
-        } elsif($arg eq "down"){
-            $new_vol = $current_vol - 10;
+    if(defined($arg)){
+        if($arg eq "up" or $arg eq "down"){
+            my $current_vol = get_vol();
+            vlog "Old Volume: $current_vol" unless $quiet;
+            if($arg eq "up"){
+                $new_vol = $current_vol + 10;
+            } elsif($arg eq "down"){
+                $new_vol = $current_vol - 10;
+            }
+        } elsif(isInt($arg)){
+            $new_vol = $arg;
+        } else {
+            usage "vol arg must be an integer";
         }
-    } elsif(isInt($arg)){
-        $new_vol = $arg;
     } else {
-        usage "vol arg must be one of up/down/<num>";
+        print "Volume: " . get_vol() . "%\n";
+        exit 0;
     }
     $new_vol = 0 if $new_vol < 0;
     $new_vol = 100 if $new_vol > 100;
