@@ -94,7 +94,8 @@ if($cmd eq "status"){
     my $new_vol;
     if($arg eq "up" or $arg eq "down"){
         my $current_vol = `$cmdline sound volume as integer'`;
-        $current_vol = isInt($current_vol) || die "failed to determine current volume\n";
+        $current_vol =~ /^(\d+)$/ || die "failed to determine current volume\n";
+        $current_vol = $1;
         if($arg eq "up"){
             $new_vol = $current_vol + 10;
         } elsif($arg eq "down"){
