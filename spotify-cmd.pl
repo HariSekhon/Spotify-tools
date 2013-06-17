@@ -86,25 +86,25 @@ my $cmdline = "$osascript -e 'tell applications \"$spotify_app\" to ";
 my %state;
 sub get_state(){
     # TODO: make this more efficient, return all at once if possible, check on this later
-    $state{"status"}       = `$cmdline player state as string'`                     || die "failed to get Spotify status\n";
-    $state{"artist"}       = `$cmdline artist of current track as string'`          || die "failed to get current artist\n";
-    $state{"album"}        = `$cmdline album of current track as string'`           || die "failed to get current album\n";
-    $state{"starred"}      = `$cmdline starred of current track as string'`         || die "failed to get current starred status\n";
-    $state{"track"}        = `$cmdline name of current track as string'`            || die "failed to get current track\n";
-    $state{"duration"}     = `$cmdline duration of current track as string'`        || die "failed to get duration of current track\n";
-    $state{"position"}     = `$cmdline player position as string'` || die "failed to get position of current track\n";
-    $state{"popularity"}   = `$cmdline popularity of current track as string'`      || die "failed to get popularity of current track\n";
-    $state{"played count"} = `$cmdline played count of current track as string'`    || die "failed to get played count of current track\n";
-    $state{"duration"} = sec2min($state{"duration"}) . "\n" if $state{"duration"};
-    $state{"position"} = sec2min($state{"position"}) . "\n" if $state{"position"};
+    $state{"status"}       = join("\n", cmd("$cmdline player state as string'")) || die "failed to get Spotify status (running/stopped/paused)\n";
+    $state{"artist"}       = join("\n", cmd("$cmdline artist of current track as string'"));
+    $state{"album"}        = join("\n", cmd("$cmdline album of current track as string'"));
+    $state{"starred"}      = join("\n", cmd("$cmdline starred of current track as string'"));
+    $state{"track"}        = join("\n", cmd("$cmdline name of current track as string'"));
+    $state{"duration"}     = join("\n", cmd("$cmdline duration of current track as string'"));
+    $state{"position"}     = join("\n", cmd("$cmdline player position as string'"));
+    $state{"popularity"}   = join("\n", cmd("$cmdline popularity of current track as string'"));
+    $state{"played count"} = join("\n", cmd("$cmdline played count of current track as string'"));
+    $state{"duration"} = sec2min($state{"duration"}) if $state{"duration"};
+    $state{"position"} = sec2min($state{"position"}) if $state{"position"};
 }
 
 
 sub print_state(){
     get_state();
     foreach((qw/status starred artist album track duration position popularity/, "played count")){
-        $state{$_} = "Unknown (external track?)\n" unless $state{$_};
-        printf "%-14s %s", ucfirst("$_:"), $state{$_};
+        $state{$_} = "Unknown (external track?)" unless defined($state{$_});
+        printf "%-14s %s\n", ucfirst("$_:"), $state{$_};
     }
 }
 
