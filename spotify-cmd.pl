@@ -10,7 +10,8 @@
 
 $DESCRIPTION = "Command line interface to Spotify on Mac that leverages AppleScript
 
-Useful for automation that you can't use your Mac HotKeys for";
+Useful for automation that Mac HotKeys don't help with,
+such as auto skipping through a playlist after x secs";
 
 $VERSION = "0.2";
 
