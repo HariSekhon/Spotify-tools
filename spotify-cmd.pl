@@ -146,12 +146,12 @@ if($cmd eq "status"){
             isInt($arg) or usage "arg to next must be an integer representing seconds before skipping to the next track";
             while(1){
                 # reset timeout so we can stay in infinite loop and iterate over playlist
+                alarm 0;
+                sleep $arg;
                 print "\n";
                 set_timeout();
                 print cmd($cmdline2);
                 print_state() unless $quiet;
-                alarm 0;
-                sleep $arg;
             }
         } elsif($cmd eq "prev" or
                 $cmd eq "next"){
