@@ -28,6 +28,7 @@ cmds:
 
 play            Play
 pause / stop    Pause
+playpause       Toggle Play/Pause
 next            Next
 previous        Previous
 
@@ -60,13 +61,14 @@ if(defined($arg)){
 }
 
 my %cmds = (
-    "play"  => "play",
-    "pause" => "pause",
-    "stop"  => "pause",
-    "next"  => "next track",
-    "prev"  => "previous track",
-    "quit"  => "quit",
-    "exit"  => "quit",
+    "play"      => "play",
+    "pause"     => "pause",
+    "stop"      => "pause",
+    "playpause" => "playpause",
+    "next"      => "next track",
+    "prev"      => "previous track",
+    "quit"      => "quit",
+    "exit"      => "quit",
 );
 
 vlog2;
