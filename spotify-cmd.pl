@@ -129,20 +129,23 @@ if($cmd eq "status"){
 } else {
     if(grep $cmd, keys %cmds){
         my $cmdline2 = "$cmdline $cmds{$cmd}'";
-        print cmd($cmdline2);
-        if($cmd eq "next"){
-            if($arg){
-                isInt($arg) or usage "arg to next must be an integer representing seconds before skipping to the next track";
-                while(1){
-                    # reset timeout so we can stay in infinite loop and iterate over playlist
-                    print "\n";
-                    set_timeout();
-                    print cmd($cmdline2);
-                    print_state();
-                    alarm 0;
-                    sleep $arg;
-                }
+        if($cmd eq "next" and $arg){
+            isInt($arg) or usage "arg to next must be an integer representing seconds before skipping to the next track";
+            while(1){
+                # reset timeout so we can stay in infinite loop and iterate over playlist
+                print "\n";
+                set_timeout();
+                print cmd($cmdline2);
+                print_state();
+                alarm 0;
+                sleep $arg;
             }
+        } elsif($cmd eq "prev" or
+                $cmd eq "next"){
+            print cmd($cmdline2);
+            print_state();
+        } else {
+            print cmd($cmdline2);
         }
     } else {
         usage "unknown command given";
