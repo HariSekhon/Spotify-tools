@@ -94,7 +94,7 @@ if($cmd eq "status"){
     $state{"position"} = sec2min($state{"position"}) . "\n" if $state{"position"};
     foreach((qw/status starred artist album track duration position popularity/, "played count")){
         $state{$_} = "Unknown (external track?)\n" unless $state{$_};
-        printf "%-12s %s", ucfirst("$_:"), $state{$_};
+        printf "%-14s %s", ucfirst("$_:"), $state{$_};
     }
 } elsif($cmd eq "vol"){
     my $new_vol;
