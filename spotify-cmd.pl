@@ -29,8 +29,11 @@ cmds:
 play            Play
 pause / stop    Pause
 playpause       Toggle Play/Pause
-next            Next
-previous        Previous
+previous        Previous Track
+next [secs]     Next Track. Specifying optional secs will skip to next track
+                every [secs] seconds. Handy for skipping through a playlist
+                every 60 secs automatically and grabbing the good songs. Prints
+                track information every time it skips to the next track
 
 status          Show current track details
 
@@ -76,10 +79,10 @@ set_timeout();
 my $osascript = which("osascript");
 my $spotify_app = "Spotify";
 my $cmdline = "$osascript -e 'tell applications \"$spotify_app\" to ";
-my @output;
 
-if($cmd eq "status"){
-    my %state;
+
+my %state;
+sub get_state(){
     # TODO: make this more efficient, return all at once if possible, check on this later
     $state{"status"}       = `$cmdline player state as string'`                     || die "failed to get Spotify status\n";
     $state{"artist"}       = `$cmdline artist of current track as string'`          || die "failed to get current artist\n";
@@ -92,10 +95,19 @@ if($cmd eq "status"){
     $state{"played count"} = `$cmdline played count of current track as string'`    || die "failed to get played count of current track\n";
     $state{"duration"} = sec2min($state{"duration"}) . "\n" if $state{"duration"};
     $state{"position"} = sec2min($state{"position"}) . "\n" if $state{"position"};
+}
+
+
+sub print_state(){
+    get_state();
     foreach((qw/status starred artist album track duration position popularity/, "played count")){
         $state{$_} = "Unknown (external track?)\n" unless $state{$_};
         printf "%-14s %s", ucfirst("$_:"), $state{$_};
     }
+}
+
+
+if($cmd eq "status"){
 } elsif($cmd eq "vol"){
     my $new_vol;
     if($arg eq "up" or $arg eq "down"){
@@ -116,8 +128,22 @@ if($cmd eq "status"){
     system($cmdline . "set sound volume to $new_vol'");
 } else {
     if(grep $cmd, keys %cmds){
-        $cmdline .= "$cmds{$cmd}'";
-        print cmd($cmdline);
+        my $cmdline2 = "$cmdline $cmds{$cmd}'";
+        print cmd($cmdline2);
+        if($cmd eq "next"){
+            if($arg){
+                isInt($arg) or usage "arg to next must be an integer representing seconds before skipping to the next track";
+                while(1){
+                    # reset timeout so we can stay in infinite loop and iterate over playlist
+                    print "\n";
+                    set_timeout();
+                    print cmd($cmdline2);
+                    print_state();
+                    alarm 0;
+                    sleep $arg;
+                }
+            }
+        }
     } else {
         usage "unknown command given";
     }
