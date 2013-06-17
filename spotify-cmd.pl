@@ -12,7 +12,7 @@ $DESCRIPTION = "Command line interface to Spotify on Mac that leverages AppleScr
 
 Useful for automation that you can't use your Mac HotKeys for";
 
-$VERSION = "0.1";
+$VERSION = "0.2";
 
 use strict;
 use warnings;
