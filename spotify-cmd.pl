@@ -61,14 +61,14 @@ if(defined($arg)){
 }
 
 my %cmds = (
-    "play"      => "play",
-    "pause"     => "pause",
-    "stop"      => "pause",
-    "playpause" => "playpause",
-    "next"      => "next track",
-    "prev"      => "previous track",
-    "quit"      => "quit",
-    "exit"      => "quit",
+    "play"            => "play",
+    "pause"           => "pause",
+    "stop"            => "pause",
+    "playpause"       => "playpause",
+    "next"            => "next track",
+    "prev"            => "previous track",
+    "quit"            => "quit",
+    "exit"            => "quit",
 );
 
 vlog2;
@@ -81,14 +81,19 @@ my @output;
 
 if($cmd eq "status"){
     my %state;
-    $state{"status"} = `$cmdline player state as string'`  || die "failed to get Spotify status\n";
-    $state{"artist"} = `$cmdline artist of current track as string'` || die "failed to get current artist\n";
-    $state{"album"}  = `$cmdline album of current track as string'`  || die "failed to get current album\n";
-    $state{"starred"}  = `$cmdline starred of current track as string'` || die "failed to get current starred status\n";
-    $state{"track"}  = `$cmdline name of current track as string'`  || die "failed to get current track\n";
-    foreach(qw/status starred artist album track/){
+    $state{"status"}     = `$cmdline player state as string'`                   || die "failed to get Spotify status\n";
+    $state{"artist"}     = `$cmdline artist of current track as string'`        || die "failed to get current artist\n";
+    $state{"album"}      = `$cmdline album of current track as string'`         || die "failed to get current album\n";
+    $state{"starred"}    = `$cmdline starred of current track as string'`       || die "failed to get current starred status\n";
+    $state{"track"}      = `$cmdline name of current track as string'`          || die "failed to get current track\n";
+    $state{"duration"}   = `$cmdline duration of current track as string'`      || die "failed to get duration of current track\n";
+    $state{"popularity"} = `$cmdline popularity of current track as string'`    || die "failed to get popularity of current track\n";
+    if($state{"duration"}){
+        $state{"duration"} = int($state{"duration"} / 60) . ":" . $state{"duration"} % 60 . "\n";
+    }
+    foreach(qw/status starred artist album track duration popularity/){
         $state{$_} = "Unknown (external track?)\n" unless $state{$_};
-        printf "%-8s %s", ucfirst "$_:", $state{$_};
+        printf "%-12s %s", ucfirst "$_:", $state{$_};
     }
 } elsif($cmd eq "vol"){
     my $new_vol;
@@ -111,7 +116,7 @@ if($cmd eq "status"){
 } else {
     if(grep $cmd, keys %cmds){
         $cmdline .= "$cmds{$cmd}'";
-        system($cmdline);
+        print cmd($cmdline);
     } else {
         usage "unknown command given";
     }
