@@ -40,7 +40,7 @@ XML::Simple
 
 Running the cpan command followed by the list of modules (as root) will fetch them for you:
 
-```sudo cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple```
+```cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple```
 
 
 ### Usage ###
