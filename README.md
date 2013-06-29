@@ -38,11 +38,10 @@ Text::Unidecode
 URI::Escape  
 XML::Simple  
 
-Running the cpan before each module name as root will fetch them:
+Running the cpan command followed by the list of modules (as root) will fetch them for you:
 
 ```cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple```
 
-Now you're ready to go
 
 ### Usage ###
 
