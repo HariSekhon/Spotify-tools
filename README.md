@@ -17,7 +17,7 @@ make
 Alternatively to run the setup manually if you don't have GNU Make installed, it's quite simple
 
 
-### Manual Setup ###
+#### Manual Setup ####
 
 Enter the directory and run git submodule init and git submodule update to fetch my library repo:
 
