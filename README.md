@@ -8,6 +8,9 @@ Spotify Lookup converts Spotify URIs to "Artist - Track" form using the Spotify 
 This fetches my library submodule and a few cpan modules. Type:
 
 ```
+git clone https://github.com/harisekhon/spotify
+```
+```
 cd spotify
 ```
 ```
@@ -21,6 +24,9 @@ Alternatively to run the setup manually if you don't have GNU Make installed, it
 
 Enter the directory and run git submodule init and git submodule update to fetch my library repo:
 
+```
+git clone https://github.com/harisekhon/spotify
+```
 ```
 cd spotify
 ```
