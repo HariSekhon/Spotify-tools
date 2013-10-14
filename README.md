@@ -9,11 +9,7 @@ This fetches my library submodule and a few cpan modules. Type:
 
 ```
 git clone https://github.com/harisekhon/spotify
-```
-```
 cd spotify
-```
-```
 make
 ```
 
@@ -26,18 +22,12 @@ Enter the directory and run git submodule init and git submodule update to fetch
 
 ```
 git clone https://github.com/harisekhon/spotify
-```
-```
 cd spotify
-```
-```
 git submodule init
-```
-```
 git submodule update
 ```
 
-You will also need to fetch the following CPAN modules:
+Then you will also need to fetch the following CPAN modules:
 
 LWP::Simple  
 Text::Unidecode  
