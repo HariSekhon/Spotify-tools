@@ -6,7 +6,7 @@
 .PHONY: install
 install:
 	git submodule init
-	git sudmodule update
+	git submodule update
 	@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
 	cpan LWP::Simple
 	cpan Text::Unidecode
