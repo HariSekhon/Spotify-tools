@@ -7,8 +7,9 @@
 install:
 	git submodule init
 	git submodule update
-	@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
-	cpan LWP::Simple
-	cpan Text::Unidecode
-	cpan URI::Escape
-	cpan XML::Simple
+	#@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
+	sudo cpan \
+		LWP::Simple \
+		Text::Unidecode \
+		URI::Escape \
+		XML::Simple
