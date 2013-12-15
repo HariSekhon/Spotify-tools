@@ -13,3 +13,7 @@ install:
 		Text::Unidecode \
 		URI::Escape \
 		XML::Simple
+
+update:
+	git pull
+	git submodule update
