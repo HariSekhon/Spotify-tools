@@ -14,6 +14,7 @@ install:
 		URI::Escape \
 		XML::Simple
 
+.PHONY: update
 update:
 	git pull
 	git submodule update
