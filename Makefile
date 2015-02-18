@@ -3,6 +3,12 @@
 #  Date: 2013-02-03 10:25:36 +0000 (Sun, 03 Feb 2013)
 #
 
+ifdef TRAVIS
+	SUDO =
+else
+	SUDO = sudo
+endif
+
 .PHONY: make
 make:
 	[ -x /usr/bin/apt-get ] && make apt-packages || :
@@ -14,7 +20,7 @@ make:
 	cd lib && make
 
 	#@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
-	sudo cpan \
+	yes "" | $(SUDO) cpan \
 		LWP::Simple \
 		Text::Unidecode \
 		URI::Escape \
