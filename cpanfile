@@ -12,7 +12,7 @@
 #  http://www.linkedin.com/in/harisekhon
 #
 
-require "LWP::Simple";
-require "Text::Unidecode";
-require "URI::Escape";
-require "XML::Simple";
+requires "LWP::Simple";
+requires "Text::Unidecode";
+requires "URI::Escape";
+requires "XML::Simple";
