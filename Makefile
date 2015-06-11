@@ -53,7 +53,8 @@ yum-packages:
 .PHONY: test
 test:
 	cd lib && make test
-	# TODO: add functional tests here
+	tests/help.sh
+	tests/spotify-api.sh
 
 .PHONY: install
 install:
