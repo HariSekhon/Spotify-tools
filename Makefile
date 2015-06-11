@@ -4,10 +4,19 @@
 #
 
 ifdef TRAVIS
-	SUDO =
+    SUDO2 =
 else
-	SUDO = sudo
+    SUDO2 = sudo
 endif
+
+# EUID /  UID not exported in Make
+ifeq '$(USER)' 'root'
+    SUDO =
+    SUDO2 =
+else
+    SUDO = sudo
+endif
+
 
 .PHONY: make
 make:
@@ -20,7 +29,8 @@ make:
 	cd lib && make
 
 	#@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
-	yes "" | $(SUDO) cpan \
+	yes "" | $(SUDO2) cpan App::cpanminus
+	yes "" | $(SUDO2) cpanm --notest \
 		LWP::Simple \
 		Text::Unidecode \
 		URI::Escape \
@@ -29,15 +39,15 @@ make:
 
 .PHONY: apt-packages
 apt-packages:
-	apt-get install -y gcc || :
+	$(SUDO) apt-get install -y gcc || :
 	# needed to fetch the library submodule at end of build
-	apt-get install -y git || :
+	$(SUDO) apt-get install -y git || :
 
 .PHONY: yum-packages
 yum-packages:
-	yum install -y gcc || :
+	rpm -q gcc || $(SUDO) yum install -y gcc || :
 	# needed to fetch the library submodule and CPAN modules
-	yum install -y perl-CPAN git || :
+	rpm -q perl-CPAN git || $(SUDO) yum install -y perl-CPAN git || :
 
 
 .PHONY: test
