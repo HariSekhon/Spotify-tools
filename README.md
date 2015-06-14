@@ -1,8 +1,9 @@
-spotify-lookup [![Build Status](https://travis-ci.org/harisekhon/spotify.svg?branch=master)](https://travis-ci.org/harisekhon/spotify)
+Spotify Tools [![Build Status](https://travis-ci.org/harisekhon/spotify.svg?branch=master)](https://travis-ci.org/harisekhon/spotify)
 ==============
 
 Spotify Lookup converts Spotify URIs to "Artist - Track" form using the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
 
+Spotify Cmd gives you command line control of Spotify on Mac via AppleScript calls and can do things like skipping tracks every x seconds if you want to flick through a playlist.
 
 ### Setup ###
 This fetches my library submodule and a few cpan modules. Type:
@@ -126,6 +127,7 @@ Completion Date: Mon Dec 31 15:46:33 GMT 2012
 For full list of options see --help
 ```
 ./spotify-lookup --help
+
 usage: spotify-lookup.pl [ options ]
 
 -f  --file              File name(s) containing the spotify URLs
@@ -138,4 +140,35 @@ usage: spotify-lookup.pl [ options ]
 -t  --timeout           Timeout in secs (default: 10)
 -v  --verbose           Verbose mode
 -V  --version           Print version and exit
+```
+```
+./spotify-cmd.pl --help
+
+usage: spotify-cmd.pl <command>
+
+commands:
+
+play            Play
+pause / stop    Pause
+playpause       Toggle Play/Pause
+previous        Previous Track and print previous track information
+next [secs]     Next Track and print next track information.
+                Specifying optional secs will skip to next track
+                every [secs] seconds. Handy for skipping through a playlist
+                every 60 secs automatically and grabbing the good songs. Prints
+                track information every time it skips to the next track
+
+status          Show current track details
+
+vol up          Turn volume up
+vol down        Turn volume down
+vol <1-100>     Set volume to number <1-100>
+
+exit / quit     Exit Spotify
+
+-q  --quiet      Quiet mode. Do not print track information or volume after completing action
+-t  --timeout    Timeout in secs (default: 10)
+-v  --verbose    Verbose mode (-v, -vv, -vvv ...)
+-h  --help       Print description and usage options
+-V  --version    Print version and exit
 ```
