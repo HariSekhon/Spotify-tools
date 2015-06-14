@@ -11,7 +11,7 @@
 $DESCRIPTION = "Command line interface to Spotify on Mac that leverages AppleScript
 
 Useful for automation that Mac HotKeys don't help with, such as auto skipping
-to next track every x secs to sample a playlist while working";
+to next track every N secs to sample a playlist while working";
 
 $VERSION = "0.2";
 
