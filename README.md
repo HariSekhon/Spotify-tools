@@ -130,16 +130,20 @@ For full list of options see --help
 
 usage: spotify-lookup.pl [ options ]
 
--f  --file              File name(s) containing the spotify URLs
--r  --retries           Number of retires (defaults to 3)
--w  --write-dir         Write to file of same name in directory path given as argument (cannot be the same as the source directory)
--s  --speed-up          Speeds up by reducing default sleep between lookups (0.1 secs) by this factor, useful if you're beind a pool of DIPs at work ;)
--n  --no-locking        Do not lock, allow more than 1 copy of this program to run at a time. This could get you blocked by Spotify's rate limiting on their metadata API. Use with caution, only if you are behind a network setup that gives you multiple IP addresses
-    --sort              Sort the resulting file (only used with --write-dir)
--h  --help              Print this help
--t  --timeout           Timeout in secs (default: 10)
--v  --verbose           Verbose mode
--V  --version           Print version and exit
+-f  --file          File name(s) containing the spotify URLs
+-a  --album         Print Album name at end of track [Album:<name>]
+    --territory     Give a 2 letter territory code to suffix tracks that aren't available in that territory with '(Unavailable in GB)'. I've found this to be unreliable information from Spotify, not currently recommended
+    --mark-local    Suffix local tracks with '(Local Track)'
+-r  --retries       Number of retires (defaults to 5)
+-w  --write-dir     Write to file of same name in directory path given as argument (cannot be the same as the source directory)
+-s  --speed-up      Speeds up by reducing default sleep between lookups (0.1 secs) by this factor, useful if you're beind a pool of DIPs at work ;)
+-n  --no-locking    Do not lock, allow more than 1 copy of this program to run at a time. This could get you blocked by Spotify's rate limiting on their metadata API. Use with caution, only if you are behind a network setup that gives you multiple IP addresses
+    --sort          Sort the resulting file (only used with --write-dir)
+    --wait          Wait to acquire spotify lock instead of exiting
+-t  --timeout       Timeout in secs (default: 10000). There is also 30 second timeout on each track translation request to the Spotify API
+-v  --verbose       Verbose mode (-v, -vv, -vvv ...)
+-h  --help          Print description and usage options
+-V  --version       Print version and exit
 ```
 
 ### Spotify Cmd ###
