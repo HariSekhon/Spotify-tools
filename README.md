@@ -42,7 +42,7 @@ cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple
 ```
 
 
-### Usage ###
+### Spotify Lookup - Usage ###
 
 You can copy and paste the tracks from Spotify directly into text files, which puts them in Spotify URI format such as 
 ```
@@ -141,6 +141,9 @@ usage: spotify-lookup.pl [ options ]
 -v  --verbose           Verbose mode
 -V  --version           Print version and exit
 ```
+
+### Spotify Cmd ###
+
 ```
 ./spotify-cmd.pl --help
 
