@@ -23,9 +23,9 @@ BEGIN {
 }
 use HariSekhonUtils qw/:DEFAULT :time/;
 
-$usage_line = "$progname <cmd>
+$usage_line = "usage: $progname <command>
 
-cmds:
+commands:
 
 play            Play
 pause / stop    Pause
