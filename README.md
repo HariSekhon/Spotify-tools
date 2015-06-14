@@ -125,6 +125,9 @@ Completion Date: Mon Dec 31 15:46:33 GMT 2012
 ```
 
 For full list of options see --help
+
+### Spotify Lookup --help ###
+
 ```
 ./spotify-lookup --help
 
@@ -161,7 +164,7 @@ usage: spotify-lookup.pl [ options ]
 -V  --version       Print version and exit
 ```
 
-### Spotify Cmd ###
+### Spotify Cmd --help ###
 
 ```
 ./spotify-cmd.pl --help
