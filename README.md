@@ -3,7 +3,7 @@ Spotify Tools [![Build Status](https://travis-ci.org/harisekhon/spotify.svg?bran
 
 Spotify Lookup - converts Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
 
-Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as skipping tracks every x seconds if you want to flick through a playlist while working.
+Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as skipping tracks every N seconds if you want to flick through a playlist while working.
 
 ### Setup ###
 This fetches my library submodule and a few cpan modules. Type:
@@ -172,7 +172,7 @@ usage: spotify-lookup.pl [ options ]
 Command line interface to Spotify on Mac that leverages AppleScript
 
 Useful for automation that Mac HotKeys don't help with, such as auto skipping
-to next track every x secs to sample a playlist while working
+to next track every N secs to sample a playlist while working
 
 usage: spotify-cmd.pl <command>
 
