@@ -1,9 +1,9 @@
 Spotify Tools [![Build Status](https://travis-ci.org/harisekhon/spotify.svg?branch=master)](https://travis-ci.org/harisekhon/spotify)
 ==============
 
-Spotify Lookup converts Spotify URIs to "Artist - Track" form using the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
+Spotify Lookup - converts Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
 
-Spotify Cmd gives you command line control of Spotify on Mac via AppleScript calls and can do things like skipping tracks every x seconds if you want to flick through a playlist.
+Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as skipping tracks every x seconds if you want to flick through a playlist while working.
 
 ### Setup ###
 This fetches my library submodule and a few cpan modules. Type:
@@ -128,19 +128,34 @@ For full list of options see --help
 ```
 ./spotify-lookup --help
 
+Filter program to convert Spotify URIs to 'Artist - Track' form by querying the
+Spotify Metadata API
+
 usage: spotify-lookup.pl [ options ]
 
 -f  --file          File name(s) containing the spotify URLs
 -a  --album         Print Album name at end of track [Album:<name>]
-    --territory     Give a 2 letter territory code to suffix tracks that aren't available in that territory with '(Unavailable in GB)'. I've found this to be unreliable information from Spotify, not currently recommended
+    --territory     Give a 2 letter territory code to suffix tracks that aren't
+                    available in that territory with '(Unavailable in GB)'.
+                    I've found this to be unreliable information from Spotify,
+                    not currently recommended
     --mark-local    Suffix local tracks with '(Local Track)'
 -r  --retries       Number of retires (defaults to 5)
--w  --write-dir     Write to file of same name in directory path given as argument (cannot be the same as the source directory)
--s  --speed-up      Speeds up by reducing default sleep between lookups (0.1 secs) by this factor, useful if you're beind a pool of DIPs at work ;)
--n  --no-locking    Do not lock, allow more than 1 copy of this program to run at a time. This could get you blocked by Spotify's rate limiting on their metadata API. Use with caution, only if you are behind a network setup that gives you multiple IP addresses
+-w  --write-dir     Write to file of same name in directory path given as
+                    argument (cannot be the same as the source directory)
+-s  --speed-up      Speeds up by reducing default sleep between lookups (0.1
+                    secs) by this factor, useful if you're beind a pool of DIPs
+                    at work ;)
+-n  --no-locking    Do not lock, allow more than 1 copy of this program to run
+                    at a time. This could get you blocked by Spotify's rate
+                    limiting on their metadata API. Use with caution, only if
+                    you are behind a network setup that gives you multiple IP
+                    addresses
     --sort          Sort the resulting file (only used with --write-dir)
     --wait          Wait to acquire spotify lock instead of exiting
--t  --timeout       Timeout in secs (default: 10000). There is also 30 second timeout on each track translation request to the Spotify API
+-t  --timeout       Timeout in secs (default: 10000). There is also 30 second
+                    timeout on each track translation request to the Spotify
+                    API
 -v  --verbose       Verbose mode (-v, -vv, -vvv ...)
 -h  --help          Print description and usage options
 -V  --version       Print version and exit
@@ -150,6 +165,11 @@ usage: spotify-lookup.pl [ options ]
 
 ```
 ./spotify-cmd.pl --help
+
+Command line interface to Spotify on Mac that leverages AppleScript
+
+Useful for automation that Mac HotKeys don't help with, such as auto skipping
+to next track every x secs to sample a playlist while working
 
 usage: spotify-cmd.pl <command>
 
@@ -173,7 +193,8 @@ vol <1-100>     Set volume to number <1-100>
 
 exit / quit     Exit Spotify
 
--q  --quiet      Quiet mode. Do not print track information or volume after completing action
+-q  --quiet      Quiet mode. Do not print track information or volume after
+                 completing action
 -t  --timeout    Timeout in secs (default: 10)
 -v  --verbose    Verbose mode (-v, -vv, -vvv ...)
 -h  --help       Print description and usage options
