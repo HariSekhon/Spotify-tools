@@ -3,7 +3,7 @@
 #  Author: Hari Sekhon
 #  Date: 2013-06-16 23:42:48 +0100 (Sun, 16 Jun 2013)
 #
-#  http://github.com/harisekhon
+#  http://github.com/harisekhon/spotify
 #
 #  License: see accompanying LICENSE file
 #
