@@ -43,7 +43,7 @@ EXPECTED="Pendulum - Witchcraft"
 echo "running spotify-lookup.pl against Spotify API"
 result=$(perl -T $I_lib spotify-lookup.pl <<< "$URI")
 if [ "$result" = "$EXPECTED" ]; then
-    echo "Correctly resolved '$URI' => '$result'"
+    echo "SUCCESSFULLY resolved '$URI' => '$result'"
     exit 0
 else
     echo "FAILED to resolve '$URI' => '$EXPECTED', got '$result' instead"
