@@ -40,15 +40,15 @@ make:
 
 .PHONY: apt-packages
 apt-packages:
-	$(SUDO) apt-get install -y gcc || :
+	$(SUDO) apt-get install -y gcc
 	# needed to fetch the library submodule at end of build
-	$(SUDO) apt-get install -y git || :
+	$(SUDO) apt-get install -y git
 
 .PHONY: yum-packages
 yum-packages:
-	rpm -q gcc || $(SUDO) yum install -y gcc || :
+	rpm -q gcc || $(SUDO) yum install -y gcc
 	# needed to fetch the library submodule and CPAN modules
-	rpm -q perl-CPAN git || $(SUDO) yum install -y perl-CPAN git || :
+	rpm -q perl-CPAN git || $(SUDO) yum install -y perl-CPAN git
 
 
 .PHONY: test
