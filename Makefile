@@ -30,8 +30,8 @@ make:
 	cd lib && make
 
 	#@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
-	yes "" | $(SUDO2) /usr/bin/cpan App::cpanminus
-	yes "" | $(SUDO2) /usr/local/bin/cpanm --notest \
+	yes "" | $(SUDO2) cpan App::cpanminus
+	yes "" | $(SUDO2) cpanm --notest \
 		LWP::Simple \
 		Text::Unidecode \
 		URI::Escape \
