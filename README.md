@@ -5,8 +5,7 @@ Spotify Lookup - converts Spotify URIs to 'Artist - Track' form by querying the 
 
 Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as skipping tracks every N seconds if you want to flick through a playlist while working.
 
-### Setup ###
-This fetches my library submodule and a few cpan modules. Type:
+### Quick Setup ###
 
 ```
 git clone https://github.com/harisekhon/spotify
@@ -14,34 +13,9 @@ cd spotify
 make
 ```
 
-Alternatively to run the setup manually if you don't have GNU Make installed, it's quite simple
+This fetches my library submodule and a few cpan modules.
 
-
-#### Manual Setup ####
-
-Enter the directory and run git submodule init and git submodule update to fetch my library repo:
-
-```
-git clone https://github.com/harisekhon/spotify
-cd spotify
-git submodule init
-git submodule update
-```
-
-Then you will also need to fetch the following CPAN modules:
-
-JSON
-LWP::Simple
-Text::Unidecode
-URI::Escape
-XML::Simple
-
-Running the cpan command followed by the list of modules (as root) will fetch them for you:
-
-```
-cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple
-```
-
+Alternatively see the [Manual Setup](https://github.com/harisekhon/spotify#manual-setup) section instead.
 
 ### Spotify Lookup - Usage ###
 
@@ -204,3 +178,40 @@ exit / quit     Exit Spotify
 -h  --help       Print description and usage options
 -V  --version    Print version and exit
 ```
+
+#### Manual Setup ####
+
+Enter the directory and run git submodule init and git submodule update to fetch my library repo:
+
+```
+git clone https://github.com/harisekhon/spotify
+cd spotify
+git submodule init
+git submodule update
+```
+
+Then you will also need to fetch the following CPAN modules:
+
+JSON
+LWP::Simple
+Text::Unidecode
+URI::Escape
+XML::Simple
+
+Running the cpan command followed by the list of modules (as root) will fetch them for you:
+
+```
+cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple
+```
+
+### Contributions ###
+
+Patches, improvements and even general feedback are welcome in the form of GitHub pull requests and issue tickets.
+
+### Updating ###
+
+Run ```make update```. This will git pull and then git submodule update which is necessary to pick up corresponding library updates.
+ndencies.
+
+If you update often and want to just quickly git pull + submodule update but skip rebuilding all those dependencies each time then run ```make update2``` (will miss new library dependencies - do full ```m
+ake update``` if you encounter issues).
