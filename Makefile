@@ -39,7 +39,7 @@ make:
 		URI::Escape \
 		XML::Simple
 	@echo
-	@echo BUILD SUCCESSFUL (spotify)
+	@echo "BUILD SUCCESSFUL (spotify)"
 
 
 .PHONY: apt-packages
