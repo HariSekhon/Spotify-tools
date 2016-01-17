@@ -66,8 +66,7 @@ install:
 
 .PHONY: update
 update:
-	git pull
-	git submodule update
+	make update-no-recompile
 	make
 	make test
 
