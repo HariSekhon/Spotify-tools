@@ -52,7 +52,8 @@ apt-packages:
 yum-packages:
 	rpm -q gcc || $(SUDO) yum install -y gcc
 	# needed to fetch the library submodule and CPAN modules
-	rpm -q perl-CPAN git || $(SUDO) yum install -y perl-CPAN git
+	rpm -q git || $(SUDO) yum install -y git
+	rpm -q perl-CPAN || $(SUDO) yum install -y perl-CPAN
 
 
 .PHONY: test
