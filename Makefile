@@ -70,3 +70,12 @@ update:
 	git submodule update
 	make
 	make test
+
+.PHONY: update2
+update2:
+	make update-no-recompile
+
+.PHONY: update-no-recompile
+update-no-recompile:
+	git pull
+	git submodule update
