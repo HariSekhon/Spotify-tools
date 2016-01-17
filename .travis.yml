@@ -9,6 +9,8 @@ perl:
   - "5.20"
   - "5.10"
 
+sudo: true
+
 notifications:
   email: false
 
