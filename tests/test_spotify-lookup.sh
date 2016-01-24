@@ -26,10 +26,10 @@ echo "Spotify Lookup API Tests"
 echo
 
 URI='http://open.spotify.com/track/1j6API7GnhE8MRRedK4bda'
-EXPECTED="Pendulum - Witchcraft"
+EXPECTED="Pendulum - Witchcraft [Album:Immersion]"
 
 echo "running spotify-lookup.pl against Spotify API"
-result=$(perl -T $I_lib spotify-lookup.pl <<< "$URI")
+result=$(perl -T $I_lib spotify-lookup.pl --album --territory GB --mark-local <<< "$URI")
 if [ "$result" = "$EXPECTED" ]; then
     echo "SUCCESSFULLY resolved '$URI' => '$result'"
 else
