@@ -8,9 +8,13 @@
 #  License: see accompanying LICENSE file
 #
 
+# Spotify changed early 2016 and this program had to be upgraded
+#
+# https://developer.spotify.com/web-api/migration-guide/
+
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
-$VERSION = "0.9.2";
+$VERSION = "0.10.0";
 
 use strict;
 use warnings;
@@ -21,7 +25,9 @@ use LWP::Simple qw/get $ua/;
 use Text::Unidecode; # For changing unicode to ascii
 use Time::HiRes qw/time sleep/;
 use URI::Escape;
-use XML::Simple qw(:strict);
+# yay Spotify changed from horrible XML to JSON API
+use JSON;
+#use XML::Simple qw(:strict);
 BEGIN {
     use File::Basename;
     use lib dirname(__FILE__) . "/lib";
@@ -134,6 +140,8 @@ my $grand_total_tracks = 0;
 
 my $line_total = 0;
 
+sub spotify_lookup($;$$);
+
 sub get_writefile_name {
     my $file = shift;
     my $filename = basename $file;
@@ -205,7 +213,7 @@ if(@files){
     }
 }
 
-sub spotify_lookup {
+sub spotify_lookup($;$$) {
     my $uri   = $_[0];
     my $count = ($_[1] or 1);
     my $retry = ($_[2] or 0);
@@ -238,23 +246,32 @@ sub spotify_lookup {
     } else {
         die "Invalid URI given: $uri\n";
     }
-    my $url = "http://ws.spotify.com/lookup/1/?uri=$track";
+    # API changed early 2016
+    #my $url = "http://ws.spotify.com/lookup/1/?uri=$track";
+    $track =~ s/^spotify:track://;
+    my $url = "https://api.spotify.com/v1/tracks/$track";
     print STDERR "$url => " if $verbose;
+    my $req = HTTP::Request->new("GET", $url);
     my $start = time;
-    my $content = get $url;
-    my ($result, $msg) = ($?, $!);
+    my $response = $ua->request($req);
     my $stop  = time;
+    my $result = $response->code;
+    my $content = $response->content;
+    vlog3("\nreturned HTML:\n\n" . ( $content ? $content : "<blank>" ) . "\n");
+    vlog2("http status code:     " . $response->code);
+    vlog2("http status message:  " . $response->message . "\n");
     my $time_taken = sprintf("%.4f", $stop - $start);
     my $actual_sleep = $sleep - $time_taken;
     $actual_sleep = 0 if $actual_sleep < 0;
     #print STDERR "$time_taken secs [sleep $actual_sleep secs]\n" if $verbose;
     print STDERR "$time_taken secs\n" if $verbose;
-    vlog3("result:  '$result'");
-    vlog3("content: '$content'") if $content;
-    #vlog3("msg: '$msg'");
-    if ($result ne 0 or not $content) {
+    unless($response->code eq "200"){
         $count++;
-        if ($count > $retries){
+        if($count > $retries){
+            my $msg = "";
+            if($json = isJson($content)){
+                $msg = get_field2($json, "error.message", 1);
+            }
             die "Failed $retries times to GET $url" . ( $msg ? ": $msg" : "" ) . "\n";
         }
         sleep 1;
@@ -263,32 +280,29 @@ sub spotify_lookup {
     }
     $content or die "content is empty from look up $url\n";
     # See http://www.perlmonks.org/?node_id=218480 for an explanation on key folding, but cos I only get 1 track I don't need this
-    my $data = XMLin($content, forcearray => 1, keyattr => [] ); #{ track => "id" });
+    #my $data = XMLin($content, forcearray => 1, keyattr => [] ); #{ track => "id" });
+    $json = isJson($content) or die "invalid json returned by Spotify API";
     #print Dumper($data);
     #print unidecode($data->{artist}[0]{name}[0] . " - " . $data->{name}[0] . "\n");
     my $artists = "";
-    foreach(@{$data->{artist}}){
-        $artists .= "${$_}{name}[0],"
+    foreach(get_field_array("artists")){
+        $artists .= get_field2($_, "name") . ","
     }
     $artists =~ s/,$//;
     unless($retry){
-        my $track = "$artists - " . $data->{name}[0];
+        my $track = "$artists - " . get_field("name");
         if($album){
-            $track .= " [Album:" . $data->{album}[0]{name}[0] . "]";
+            $track .= " [Album:" . get_field("album.name") . "]";
         }
-        if($data->{available} =~ /^true$/i){
-            $track .= " (Unavailable)";
-        } elsif($territory){
-            if(defined($data->{album}[0]{availability}[0]{territories}[0])){
-                # Sometimes territories aren't there eg Micahel Jackson - Thriller. I assume this mean it's all territories since it obviously works here in UK
-                # But others marked available but have in fact unavailable with <territories/>
-                # eg Lenny Fontana & Ridney pres. Larisa - Wait 4 U - Full Radio Edit => http://open.spotify.com/track/3HM5d7pAIGhyPFXO30rJGI
-                # So this is an unreliable check right now since the metadata from Spotify isn't consistent
-                # therefore I can't definitely infer availability, so the above example WAit 4 U won't be marked as Unavailable in the output
-                if(isScalar($data->{album}[0]{availability}[0]{territories}[0]) and $data->{album}[0]{availability}[0]{territories}[0] !~ /^\s*$/){
-                    unless($data->{album}[0]{availability}[0]{territories}[0] =~ /\b$territory\b/){
-                        $track .= " (Unavailable in $territory)";
-                    }
+        #my $available = get_field("available", 1);
+        #if(defined($available) and $available =~ /^true$/i){
+        #    $track .= " (Unavailable)";
+        #} elsif($territory){
+        if($territory){
+            my @available_markets = get_field_array("available_markets");
+            if(@available_markets){
+                unless(grep { $_ eq $territory } @available_markets){
+                    $track .= " (Unavailable in $territory)";
                 }
             } else {
                 print STDERR "WARNING: territories not found for $track\n";
