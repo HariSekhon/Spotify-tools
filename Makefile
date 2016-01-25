@@ -27,7 +27,7 @@ build:
 	if [ -x /usr/bin/yum ];     then make yum-packages; fi
 
 	git submodule init
-	git submodule update --remote --recursive
+	git submodule update --recursive
 
 	cd lib && make
 
@@ -78,7 +78,7 @@ update2:
 .PHONY: update-no-recompile
 update-no-recompile:
 	git pull
-	git submodule update --init --remote --recursive
+	git submodule update --init --recursive
 
 .PHONY: clean
 clean:
