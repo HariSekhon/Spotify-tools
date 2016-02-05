@@ -1,11 +1,17 @@
 #!/usr/bin/perl -T
+#  vim:ts=4:sts=4:sw=4:et
 #
 #  Author: Hari Sekhon
 #  Date: 2012-04-06 21:01:42 +0100 (Fri, 06 Apr 2012)
 #
-#  http://github.com/harisekhon/spotify
+#  https://github.com/harisekhon/spotify
 #
-#  License: see accompanying LICENSE file
+#  License: see accompanying Hari Sekhon LICENSE file
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback
+#  to help improve or steer this or other code I publish
+#
+#  http://www.linkedin.com/in/harisekhon
 #
 
 # Spotify changed early 2016 and this program had to be upgraded
