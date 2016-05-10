@@ -3,7 +3,7 @@
 #  Author: Hari Sekhon
 #  Date: 2014-11-29 01:02:47 +0000 (Sat, 29 Nov 2014)
 #
-#  https://github.com/harisekhon/spotify
+#  https://github.com/harisekhon/spotify-tools
 #
 #  License: see accompanying Hari Sekhon LICENSE file
 #
@@ -35,3 +35,6 @@ install:
   #- make apt-packages
   #- cpanm --installdeps --notest . || echo CPANM FAILED
   - make
+
+after_success:
+  - curl --data {build:true} -X POST https://registry.hub.docker.com/u/harisekhon/spotify-tools/trigger/019167ad-6f8e-43c4-9004-7038b5ed077f/
