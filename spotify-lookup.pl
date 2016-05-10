@@ -4,7 +4,7 @@
 #  Author: Hari Sekhon
 #  Date: 2012-04-06 21:01:42 +0100 (Fri, 06 Apr 2012)
 #
-#  https://github.com/harisekhon/spotify
+#  https://github.com/harisekhon/spotify-tools
 #
 #  License: see accompanying Hari Sekhon LICENSE file
 #
