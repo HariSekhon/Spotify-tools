@@ -1,4 +1,4 @@
-Spotify Tools [![Build Status](https://travis-ci.org/HariSekhon/spotify-tools.svg?branch=master)](https://travis-ci.org/HariSekhon/spotify-tools)
+Spotify Tools [![Build Status](https://travis-ci.org/HariSekhon/spotify-tools.svg?branch=master)](https://travis-ci.org/HariSekhon/spotify-tools) [![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/r/harisekhon/nagios-plugins/)
 ==============
 
 Spotify Lookup - converts Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
