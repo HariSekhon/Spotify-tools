@@ -26,14 +26,14 @@ docker run harisekhon/spotify-tools <program> <args>
 #### Automated Build from source #####
 
 ```
-git clone https://github.com/harisekhon/spotify
+git clone https://github.com/harisekhon/spotify-tools
 cd spotify
 make
 ```
 
 This fetches my library submodule and a few cpan modules.
 
-Alternatively see the [Manual Setup](https://github.com/harisekhon/spotify#manual-setup) section instead.
+Alternatively see the [Manual Setup](https://github.com/harisekhon/spotify-tools#manual-setup) section instead.
 
 ### Spotify Lookup - Usage ###
 
@@ -202,7 +202,7 @@ exit / quit     Exit Spotify
 Enter the directory and run git submodule init and git submodule update to fetch my library repo:
 
 ```
-git clone https://github.com/harisekhon/spotify
+git clone https://github.com/harisekhon/spotify-tools
 cd spotify
 git submodule init
 git submodule update
