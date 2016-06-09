@@ -10,6 +10,21 @@ Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Usef
 
 ### Quick Setup ###
 
+#### Ready to run Docker image #####
+
+These programs and their pre-compiled dependencies can be found ready to run on [DockerHub](https://hub.docker.com/r/harisekhon/spotify-tools/).
+
+List all programs:
+```
+docker run harisekhon/spotify-tools
+```
+Run any given program:
+```
+docker run harisekhon/spotify-tools <program> <args>
+```
+
+#### Automated Build from source #####
+
 ```
 git clone https://github.com/harisekhon/spotify
 cd spotify
