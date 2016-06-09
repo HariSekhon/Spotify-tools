@@ -8,7 +8,7 @@ Spotify Lookup - converts Spotify URIs to 'Artist - Track' form by querying the 
 
 Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as skipping tracks every N seconds if you want to flick through a playlist while working.
 
-### Quick Setup ###
+### Quick Start ###
 
 #### Ready to run Docker image #####
 
