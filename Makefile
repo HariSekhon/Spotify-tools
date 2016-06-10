@@ -49,7 +49,7 @@ build:
 		URI::Escape \
 		XML::Simple
 	@echo
-	@echo "BUILD SUCCESSFUL (spotify)"
+	@echo "BUILD SUCCESSFUL (spotify-tools)"
 
 
 .PHONY: apt-packages
@@ -89,6 +89,13 @@ update2:
 update-no-recompile:
 	git pull
 	git submodule update --init --recursive
+
+.PHONY: update-submodules
+update-submodules:
+	git submodule update --init --remote
+.PHONY: updatem
+updatem:
+	make update-submodules
 
 .PHONY: clean
 clean:
