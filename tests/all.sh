@@ -17,13 +17,11 @@ set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 srcdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "
-# =================== #
-# Running Spotify ALL
-# =================== #
-"
+cd "$srcdir"
 
-cd "$srcdir";
+. ../bash-tools/utils.sh
+
+section "Running Spotify ALL"
 
 ./syntax.sh
 
