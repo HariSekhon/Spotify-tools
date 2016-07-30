@@ -33,6 +33,7 @@ endif
 
 .PHONY: build
 build:
+	if [ -x /sbin/apk ];        then make apk-packages; fi
 	if [ -x /usr/bin/apt-get ]; then make apt-packages; fi
 	if [ -x /usr/bin/yum ];     then make yum-packages; fi
 
@@ -51,6 +52,27 @@ build:
 	@echo
 	@echo "BUILD SUCCESSFUL (spotify-tools)"
 
+.PHONY: apk-packages
+apk-packages:
+	$(SUDO) apk add alpine-sdk
+	$(SUDO) apk add bash
+	$(SUDO) apk add expat-dev
+	$(SUDO) apk add gcc
+	$(SUDO) apk add git
+	$(SUDO) apk add make
+	$(SUDO) apk add openssl-dev
+	$(SUDO) apk add perl
+	$(SUDO) apk add perl-dev
+	$(SUDO) apk add wget
+
+.PHONY: apk-packages-remove
+apk-packages-remove:
+	$(SUDO) apk del alpine-sdk
+	$(SUDO) apk del expat-dev
+	$(SUDO) apk del gcc
+	$(SUDO) apk del openssl-dev
+	$(SUDO) apk del perl-dev
+	$(SUDO) apk del wget
 
 .PHONY: apt-packages
 apt-packages:
@@ -64,7 +86,6 @@ yum-packages:
 	# needed to fetch the library submodule and CPAN modules
 	rpm -q git || $(SUDO) yum install -y git
 	rpm -q perl-CPAN || $(SUDO) yum install -y perl-CPAN
-
 
 .PHONY: test
 test:
