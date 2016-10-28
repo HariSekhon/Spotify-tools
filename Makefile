@@ -77,7 +77,7 @@ apk-packages-remove:
 		openssl-dev \
 		perl-dev \
 		wget \
-		:
+		|| :
 	$(SUDO) rm -fr /var/cache/apk/*
 
 .PHONY: apt-packages
