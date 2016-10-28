@@ -54,6 +54,7 @@ build:
 
 .PHONY: apk-packages
 apk-packages:
+	$(SUDO) apk update
 	$(SUDO) apk add alpine-sdk
 	$(SUDO) apk add bash
 	$(SUDO) apk add expat-dev
@@ -67,6 +68,7 @@ apk-packages:
 
 .PHONY: apk-packages-remove
 apk-packages-remove:
+	cd lib && make apk-packages-remove
 	$(SUDO) apk del alpine-sdk
 	$(SUDO) apk del expat-dev
 	$(SUDO) apk del gcc
