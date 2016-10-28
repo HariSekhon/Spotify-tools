@@ -103,7 +103,7 @@ install:
 update:
 	make update-no-recompile
 	make
-	make test
+	@#make test
 
 .PHONY: update2
 update2:
