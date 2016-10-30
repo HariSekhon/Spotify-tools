@@ -36,6 +36,9 @@ install:
   #- cpanm --installdeps --notest . || echo CPANM FAILED
   - make
 
+script:
+  - make test
+
 after_success:
   - curl -ivv --data {build:true} -X POST https://registry.hub.docker.com/u/harisekhon/spotify-tools/trigger/019167ad-6f8e-43c4-9004-7038b5ed077f/
   - curl -ivv --data {build:true} -X POST https://registry.hub.docker.com/u/harisekhon/centos-github/trigger/316d1158-7ffb-49a4-a7bd-8e5456ba2d15/
