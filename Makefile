@@ -55,43 +55,31 @@ build:
 .PHONY: apk-packages
 apk-packages:
 	$(SUDO) apk update
-	$(SUDO) apk add \
-		alpine-sdk \
-		bash \
-		expat-dev \
-		gcc \
-		git \
-		make \
-		openssl-dev \
-		perl \
-		perl-dev \
-		wget
+	$(SUDO) apk add `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/apk-packages.txt`
 
 .PHONY: apk-packages-remove
 apk-packages-remove:
 	cd lib && make apk-packages-remove
-	$(SUDO) apk del \
-		alpine-sdk \
-		expat-dev \
-		gcc \
-		openssl-dev \
-		perl-dev \
-		wget \
-		|| :
+	$(SUDO) apk del `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/apk-packages-dev.txt` || :
 	$(SUDO) rm -fr /var/cache/apk/*
 
 .PHONY: apt-packages
 apt-packages:
-	$(SUDO) apt-get install -y gcc
-	# needed to fetch the library submodule at end of build
-	$(SUDO) apt-get install -y git
+	$(SUDO) apt-get install -y `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/deb-packages.txt`
+
+.PHONY: apt-packages-remove
+apt-packages-remove:
+	cd lib && make apt-packages-remove
+	$(SUDO) apt-get purge -y `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/deb-packages-dev.txt`
 
 .PHONY: yum-packages
 yum-packages:
-	rpm -q gcc || $(SUDO) yum install -y gcc
-	# needed to fetch the library submodule and CPAN modules
-	rpm -q git || $(SUDO) yum install -y git
-	rpm -q perl-CPAN || $(SUDO) yum install -y perl-CPAN
+	for x in `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/rpm-packages.txt`; do rpm -q $$x || $(SUDO) yum install -y $$x; done
+
+.PHONY: yum-packages-remove
+yum-packages-remove:
+	cd lib && make yum-packages-remove
+	for x in `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/rpm-packages-dev.txt`; do rpm -q $$x && $(SUDO) yum remove -y $$x; done
 
 .PHONY: test
 test:
