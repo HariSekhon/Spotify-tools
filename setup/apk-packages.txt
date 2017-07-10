@@ -20,7 +20,8 @@ expat-dev
 gcc
 git
 make
-openssl-dev
+#openssl-dev
+libressl-dev
 perl
 perl-dev
 wget
