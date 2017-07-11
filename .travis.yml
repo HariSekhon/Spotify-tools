@@ -15,7 +15,9 @@
 
 language: perl
 perl:
-  - "5.20"
+  # this build has thread support
+  - "5.24-shrplib"
+  #- "5.20"
   - "5.10"
 
 sudo: required
