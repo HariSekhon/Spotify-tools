@@ -37,14 +37,14 @@ build:
 	@echo Spotify Tools Build
 	@echo ===================
 
-	if [ -x /sbin/apk ];        then make apk-packages; fi
-	if [ -x /usr/bin/apt-get ]; then make apt-packages; fi
-	if [ -x /usr/bin/yum ];     then make yum-packages; fi
+	if [ -x /sbin/apk ];        then $(MAKE) apk-packages; fi
+	if [ -x /usr/bin/apt-get ]; then $(MAKE) apt-packages; fi
+	if [ -x /usr/bin/yum ];     then $(MAKE) yum-packages; fi
 
 	git submodule init
 	git submodule update --recursive
 
-	cd lib && make
+	cd lib && $(MAKE)
 
 	#@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
 	yes "" | $(SUDO2) cpan App::cpanminus
@@ -63,7 +63,7 @@ apk-packages:
 
 .PHONY: apk-packages-remove
 apk-packages-remove:
-	cd lib && make apk-packages-remove
+	cd lib && $(MAKE) apk-packages-remove
 	$(SUDO) apk del `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/apk-packages-dev.txt` || :
 	$(SUDO) rm -fr /var/cache/apk/*
 
@@ -73,7 +73,7 @@ apt-packages:
 
 .PHONY: apt-packages-remove
 apt-packages-remove:
-	cd lib && make apt-packages-remove
+	cd lib && $(MAKE) apt-packages-remove
 	$(SUDO) apt-get purge -y `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/deb-packages-dev.txt`
 
 .PHONY: yum-packages
@@ -82,12 +82,12 @@ yum-packages:
 
 .PHONY: yum-packages-remove
 yum-packages-remove:
-	cd lib && make yum-packages-remove
+	cd lib && $(MAKE) yum-packages-remove
 	for x in `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/rpm-packages-dev.txt`; do rpm -q $$x && $(SUDO) yum remove -y $$x; done
 
 .PHONY: test
 test:
-	cd lib && make test
+	cd lib && $(MAKE) test
 	tests/all.sh
 
 .PHONY: install
@@ -96,13 +96,13 @@ install:
 
 .PHONY: update
 update:
-	make update-no-recompile
-	make
-	@#make test
+	$(MAKE) update-no-recompile
+	$(MAKE)
+	@#$(MAKE) test
 
 .PHONY: update2
 update2:
-	make update-no-recompile
+	$(MAKE) update-no-recompile
 
 .PHONY: update-no-recompile
 update-no-recompile:
@@ -114,7 +114,7 @@ update-submodules:
 	git submodule update --init --remote
 .PHONY: updatem
 updatem:
-	make update-submodules
+	$(MAKE) update-submodules
 
 .PHONY: clean
 clean:
