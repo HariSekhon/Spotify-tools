@@ -13,6 +13,8 @@
 #  http://www.linkedin.com/in/harisekhon
 #
 
+REPO := HariSekhon/spotify-tools
+
 ifdef TRAVIS
 	SUDO2 =
 	CPANM = cpanm
@@ -123,7 +125,3 @@ clean:
 .PHONY: push
 push:
 	git push
-
-.PHONY: travis
-travis:
-	travis_last_log.py /spotify-tools
