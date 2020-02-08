@@ -2,6 +2,8 @@ Spotify Tools
 =============
 [![Build Status](https://travis-ci.org/HariSekhon/spotify-tools.svg?branch=master)](https://travis-ci.org/HariSekhon/spotify-tools)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bf879eba5f1c4fd89f92b0f9407b345e)](https://www.codacy.com/app/harisekhon/spotify-tools)
+[![GitHub stars](https://img.shields.io/github/stars/harisekhon/spotify-tools.svg)](https://github.com/harisekhon/spotify-tools/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/harisekhon/spotify-tools.svg)](https://github.com/harisekhon/spotify-tools/network)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20OS%20X-blue.svg)](https://github.com/harisekhon/spotify-tools#spotify-tools)
 [![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/r/harisekhon/nagios-plugins/)
 [![](https://images.microbadger.com/badges/image/harisekhon/spotify-tools.svg)](http://microbadger.com/#/images/harisekhon/spotify-tools)
@@ -39,7 +41,7 @@ Alternatively see the [Manual Setup](https://github.com/harisekhon/spotify-tools
 
 ### Spotify Lookup - Usage ###
 
-You can copy and paste the tracks from Spotify directly into text files, which puts them in Spotify URI format such as 
+You can copy and paste the tracks from Spotify directly into text files, which puts them in Spotify URI format such as
 ```
 http://open.spotify.com/track/61oGXsKgJOI0e3uS2wg1BV
 http://open.spotify.com/track/1j6API7GnhE8MRRedK4bda
@@ -59,10 +61,10 @@ Pendulum - The Island - Pt. I
 You can also pipe the file through standard input or even feed one or more Spotify URIs as standard input in either format that Spotify uses
 
 ```
-echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./spotify-lookup.pl 
+echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./spotify-lookup.pl
 Foo Fighters - Arlandria
 
-echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./spotify-lookup.pl 
+echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./spotify-lookup.pl
 Foo Fighters - Arlandria
 ```
 
@@ -115,7 +117,7 @@ write file: '/Users/hari/music/Foo_Fighters'
 Wrote: /Users/hari/music/Foo_Fighters
 
 
-Summary:         53 tracks, 0 local tracks, 53 spotify tracks fetched in 5.6081 secs   
+Summary:         53 tracks, 0 local tracks, 53 spotify tracks fetched in 5.6081 secs
 Completion Date: Mon Dec 31 15:46:33 GMT 2012
 ```
 
