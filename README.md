@@ -236,3 +236,5 @@ Run ```make update```. This will git pull and then git submodule update which is
 ndencies.
 
 If you update often and want to just quickly git pull + submodule update but skip rebuilding all those dependencies each time then run ```make update-no-recompile``` (will miss new library dependencies - do full ```make update``` if you encounter issues).
+
+[git.io/spotify](https://git.io/spotify)
