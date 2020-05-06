@@ -27,5 +27,5 @@ export DOCKER_IMAGE="harisekhon/spotify-tools"
 
 if is_docker_available; then
     docker pull "$DOCKER_IMAGE"
-    docker run "$DOCKER_IMAGE" tests/all.sh
+    docker run -ti --rm "$DOCKER_IMAGE" tests/all.sh
 fi
