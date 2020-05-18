@@ -17,11 +17,10 @@ set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 srcdir="$(cd "$(dirname "$0")" && pwd)"
 
-cd "$srcdir/.."
+# shellcheck disable=SC1090
+. "$srcdir/bash-tools/lib/docker.sh"
 
-. "bash-tools/docker.sh"
-
-section "Docker Image"
+section "Spotify Docker Image Test"
 
 export DOCKER_IMAGE="harisekhon/spotify-tools"
 
