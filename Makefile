@@ -72,32 +72,6 @@ test:
 install: build
 	@echo "No installation needed, just add '$(PWD)' to your \$$PATH"
 
-.PHONY: update
-update:
-	$(MAKE) update-no-recompile
-	$(MAKE)
-	@#$(MAKE) test
-
-.PHONY: update2
-update2:
-	$(MAKE) update-no-recompile
-
-.PHONY: update-no-recompile
-update-no-recompile:
-	git pull
-	git submodule update --init --recursive
-
-.PHONY: update-submodules
-update-submodules:
-	git submodule update --init --remote
-.PHONY: updatem
-updatem:
-	$(MAKE) update-submodules
-
 .PHONY: clean
 clean:
 	@echo Nothing to clean
-
-.PHONY: push
-push:
-	git push
