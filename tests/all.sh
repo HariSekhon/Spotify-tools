@@ -19,17 +19,18 @@ srcdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd "$srcdir"
 
-. ../bash-tools/utils.sh
+. ../bash-tools/lib/utils.sh
 
-section "Running Spotify ALL"
+section "Running Spotify All Tests"
 
 ./syntax.sh
 
-for script in $(find . -name 'test*.sh'); do
-    ./$script
-done
+while read -r script; do
+    "./$script"
+done < <(find . -name 'test*.sh')
 
 ./help.sh
 
 cd "$srcdir/.."
-bash-tools/all.sh
+
+bash-tools/check_all.sh
