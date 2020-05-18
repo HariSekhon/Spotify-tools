@@ -13,31 +13,25 @@
 #  http://www.linkedin.com/in/harisekhon
 #
 
+ifneq ("$(wildcard bash-tools/Makefile.in)", "")
+	include bash-tools/Makefile.in
+endif
+
 REPO := HariSekhon/spotify-tools
 
-ifdef TRAVIS
-	SUDO2 =
-	CPANM = cpanm
-else
-	SUDO2 = sudo
-	CPANM = /usr/local/bin/cpanm
-endif
+CODE_FILES := $(shell find . -type f -name '*.pl' -o -type f -name '*.pm' -o -type f -name '*.sh' -o -type f -name '*.t' | grep -v -e bash-tools -e Hbase)
 
-# EUID /  UID not exported in Make
-# USER not populated in Docker
-ifeq '$(shell id -u)' '0'
-	SUDO =
-	SUDO2 =
-else
-	SUDO = sudo
+ifndef CPANM
+	CPANM := cpanm
 endif
-
 
 .PHONY: build
-build:
+build: init
 	@echo ===================
 	@echo Spotify Tools Build
 	@echo ===================
+	@$(MAKE) git-summary
+	echo
 
 	if [ -x /sbin/apk ];        then $(MAKE) apk-packages; fi
 	if [ -x /usr/bin/apt-get ]; then $(MAKE) apt-packages; fi
@@ -48,44 +42,26 @@ build:
 
 	cd lib && $(MAKE)
 
-	#@ [ $$EUID -eq 0 ] || { echo "error: must be root to install cpan modules"; exit 1; }
-	yes "" | $(SUDO2) cpan App::cpanminus
-	yes "" | $(SUDO2) $(CPANM) --notest \
-		LWP::Simple \
-		Text::Unidecode \
-		URI::Escape \
-		XML::Simple
+	$(MAKE) system-packages-perl
+	$(MAKE) perl
+
 	@echo
 	@echo "BUILD SUCCESSFUL (spotify-tools)"
+	@echo
+	@echo
 
-.PHONY: apk-packages
-apk-packages:
-	$(SUDO) apk update
-	$(SUDO) apk add `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/apk-packages.txt`
+.PHONY: init
+init:
+	git submodule update --init --recursive
 
-.PHONY: apk-packages-remove
-apk-packages-remove:
-	cd lib && $(MAKE) apk-packages-remove
-	$(SUDO) apk del `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/apk-packages-dev.txt` || :
-	$(SUDO) rm -fr /var/cache/apk/*
+.PHONY: perl
+perl:
+	perl -v
 
-.PHONY: apt-packages
-apt-packages:
-	$(SUDO) apt-get install -y `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/deb-packages.txt`
-
-.PHONY: apt-packages-remove
-apt-packages-remove:
-	cd lib && $(MAKE) apt-packages-remove
-	$(SUDO) apt-get purge -y `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/deb-packages-dev.txt`
-
-.PHONY: yum-packages
-yum-packages:
-	for x in `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/rpm-packages.txt`; do rpm -q $$x || $(SUDO) yum install -y $$x; done
-
-.PHONY: yum-packages-remove
-yum-packages-remove:
-	cd lib && $(MAKE) yum-packages-remove
-	for x in `sed 's/#.*//; /^[[:space:]]*$$/d' < setup/rpm-packages-dev.txt`; do rpm -q $$x && $(SUDO) yum remove -y $$x; done
+	#(echo y; echo o conf prerequisites_policy follow; echo o conf commit) | cpan
+	which $(CPANM) || { yes "" | $(SUDO_PERL) cpan App::cpanminus; }
+	$(CPANM) -V | head -n2
+	$(MAKE) cpan
 
 .PHONY: test
 test:
@@ -93,7 +69,7 @@ test:
 	tests/all.sh
 
 .PHONY: install
-install:
+install: build
 	@echo "No installation needed, just add '$(PWD)' to your \$$PATH"
 
 .PHONY: update
