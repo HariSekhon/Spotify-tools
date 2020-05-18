@@ -61,6 +61,9 @@ perl:
 	#(echo y; echo o conf prerequisites_policy follow; echo o conf commit) | cpan
 	which $(CPANM) || { yes "" | $(SUDO_PERL) cpan App::cpanminus; }
 	$(CPANM) -V | head -n2
+
+	cd lib && $(MAKE)
+
 	$(MAKE) cpan
 
 .PHONY: test
