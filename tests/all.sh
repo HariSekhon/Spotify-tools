@@ -19,7 +19,8 @@ srcdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd "$srcdir"
 
-. ../bash-tools/lib/utils.sh
+# shellcheck disable=SC1090
+. "$srcdir/../bash-tools/lib/utils.sh"
 
 section "Running Spotify All Tests"
 
