@@ -21,7 +21,7 @@ cd "$srcdir/..";
 
 . ./tests/utils.sh
 
-for x in $(echo *.pl *.py *.rb 2>/dev/null); do
+for x in $(echo ./*.pl ./*.py ./*.rb 2>/dev/null); do
     isExcluded "$x" && continue
     set +e
     optional_cmd=""
