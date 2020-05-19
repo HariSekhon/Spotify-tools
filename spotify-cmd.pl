@@ -17,7 +17,15 @@
 $DESCRIPTION = "Command line interface to Spotify on Mac that leverages AppleScript
 
 Useful for automation that Mac HotKeys don't help with, such as auto skipping
-to next track every N secs to sample a playlist while working";
+to next track every N secs to sample a playlist while working
+
+Update: there is now a newer better CLI tool I found which uses the Spotify API
+but requires a developer key. It should work on different operating systems other than just Mac.
+
+https://github.com/jingweno/spotctl
+
+This one is simpler and doesn't require API keys and also has the auto-skipping feature I used
+";
 
 $VERSION = "0.2";
 
