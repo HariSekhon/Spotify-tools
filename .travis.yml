@@ -41,7 +41,7 @@ install:
   #- popd
   #- make apt-packages
   #- cpanm --installdeps --notest . || echo CPANM FAILED
-  - travis_retry make test
+  - travis_retry make
 
 script:
   - make test
