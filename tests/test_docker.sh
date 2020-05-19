@@ -18,7 +18,7 @@ set -euo pipefail
 srcdir="$(cd "$(dirname "$0")" && pwd)"
 
 # shellcheck disable=SC1090
-. "$srcdir/bash-tools/lib/docker.sh"
+. "$srcdir/../bash-tools/lib/docker.sh"
 
 section "Spotify Docker Image Test"
 
