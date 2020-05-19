@@ -87,7 +87,7 @@ docker run harisekhon/spotify-tools <program> <args>
 
 ```
 git clone https://github.com/harisekhon/spotify-tools
-cd spotify
+cd spotify-tools
 make
 ```
 
@@ -263,23 +263,17 @@ Enter the directory and run git submodule init and git submodule update to fetch
 
 ```
 git clone https://github.com/harisekhon/spotify-tools
-cd spotify
+cd spotify-tools
 git submodule init
 git submodule update
 ```
 
-Then you will also need to fetch the following CPAN modules:
-
-JSON
-LWP::Simple
-Text::Unidecode
-URI::Escape
-XML::Simple
+Then you will also need to fetch the following CPAN modules listed in `setup/cpan-requirements.txt` and `lib/setup/cpan-requirements.txt`:
 
 Running the cpan command followed by the list of modules (as root) will fetch them for you:
 
 ```
-cpan LWP::Simple Text::Unidecode URI::Escape XML::Simple
+bash-tools/perl_cpanm_install.sh setup/cpan-requirements.txt lib/setup/cpan-requirements.txt
 ```
 
 ### Contributions ###
