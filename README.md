@@ -1,12 +1,66 @@
 Spotify Tools
 =============
-[![Build Status](https://travis-ci.org/HariSekhon/spotify-tools.svg?branch=master)](https://travis-ci.org/HariSekhon/spotify-tools)
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bf879eba5f1c4fd89f92b0f9407b345e)](https://www.codacy.com/app/harisekhon/spotify-tools)
+[![CodeFactor](https://www.codefactor.io/repository/github/harisekhon/lib/badge)](https://www.codefactor.io/repository/github/harisekhon/lib)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_lib&metric=alert_status)](https://sonarcloud.io/dashboard?id=HariSekhon_lib)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_lib&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_lib)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_lib&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_lib)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_lib&metric=security_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_lib)
 [![GitHub stars](https://img.shields.io/github/stars/harisekhon/spotify-tools.svg)](https://github.com/harisekhon/spotify-tools/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/harisekhon/spotify-tools.svg)](https://github.com/harisekhon/spotify-tools/network)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20OS%20X-blue.svg)](https://github.com/harisekhon/spotify-tools#spotify-tools)
 [![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/r/harisekhon/nagios-plugins/)
 [![](https://images.microbadger.com/badges/image/harisekhon/spotify-tools.svg)](http://microbadger.com/#/images/harisekhon/spotify-tools)
+
+[![Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux)](https://github.com/HariSekhon/spotify-tools#spotify-tools)
+[![Mac](https://img.shields.io/badge/OS-Mac-blue?logo=apple)](https://github.com/HariSekhon/spotify-tools#spotify-tools)
+[![CI Builds Overview](https://img.shields.io/badge/CI%20Builds-Overview%20Page-blue)](https://bitbucket.org/harisekhon/devops-bash-tools/src/master/STATUS.md)
+
+[![Travis CI](https://img.shields.io/travis/harisekhon/Spotify-tools/master?logo=travis&label=Travis)](https://travis-ci.org/HariSekhon/Spotify-tools)
+[![AppVeyor](https://img.shields.io/appveyor/build/harisekhon/Spotify-tools/master?logo=appveyor&label=AppVeyor)](https://ci.appveyor.com/project/HariSekhon/Spotify-tools/branch/master)
+[![Drone](https://img.shields.io/drone/build/HariSekhon/Spotify-tools/master?logo=drone&label=Drone)](https://cloud.drone.io/HariSekhon/Spotify-tools)
+[![CircleCI](https://circleci.com/gh/HariSekhon/Spotify-tools.svg?style=svg)](https://circleci.com/gh/HariSekhon/Spotify-tools)
+[![Codeship Status for HariSekhon/Spotify-tools](https://app.codeship.com/projects/44957fe0-3c5f-0138-07d2-66210e546d42/status?branch=master)](https://app.codeship.com/projects/387244)
+[![Shippable](https://img.shields.io/shippable/5e52c637b15ffc00071d8f84/master?label=Shippable)](https://app.shippable.com/github/HariSekhon/Spotify-tools/dashboard/jobs)
+[![Codefresh](https://g.codefresh.io/api/badges/pipeline/harisekhon/GitHub%2FSpotify-tools?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU1MmM5OGNiM2FiOWUzM2Y3ZDZmYjM3.O69674cW7vYom3v5JOGKXDbYgCVIJU9EWhXUMHl3zwA&type=cf-1)](https://g.codefresh.io/pipelines/edit/workflow?id=5ec401171350573576125f8d&pipeline=Spotify-tools&projects=GitHub&projectId=5e52ca8ea284e00f882ea992&rightbar=steps&advanced=0&context=github)
+[![Wercker](https://app.wercker.com/status/5ec40277728d7f43001aa790/s/master "wercker status")](https://app.wercker.com/project/byKey/5ec40277728d7f43001aa790)
+[![BuildKite](https://img.shields.io/buildkite/cb0dcf2e1eed7a2c3d6035b8c5ca1bf4a741c1153b89688fcf/master?label=BuildKite)](https://buildkite.com/hari-sekhon/Spotify-tools)
+[![Cirrus CI](https://img.shields.io/cirrus/github/HariSekhon/Spotify-tools/master?logo=Cirrus%20CI&label=Cirrus%20CI)](https://cirrus-ci.com/github/HariSekhon/Spotify-tools)
+[![Semaphore](https://harisekhon.semaphoreci.com/badges/Spotify-tools.svg)](https://harisekhon.semaphoreci.com/projects/Spotify-tools)
+[![Concourse](https://img.shields.io/badge/Concourse-ready-blue)](https://github.com/HariSekhon/Spotify-tools/blob/master/.concourse.yml)
+[![GoCD](https://img.shields.io/badge/GoCD-ready-blue)](https://github.com/HariSekhon/Spotify-tools/blob/master/.gocd.yml)
+[![Jenkins](https://img.shields.io/badge/Jenkins-ready-blue)](https://github.com/HariSekhon/Spotify-tools/blob/master/Jenkinsfile)
+<!--
+[![Wercker](https://img.shields.io/wercker/ci/5e58eec714b91a0800356b5b/master?label=Wercker)](https://app.wercker.com/project/byKey/7af643f46ecad1311bc1200fd42e509b)
+-->
+
+[![Azure DevOps](https://dev.azure.com/harisekhon/GitHub/_apis/build/status/HariSekhon.spotify-tools?branchName=master)](https://dev.azure.com/harisekhon/GitHub/_build/latest?definitionId=3&branchName=master)
+[![BitBucket Pipeline](https://img.shields.io/bitbucket/pipelines/harisekhon/spotify-tools/master?logo=bitbucket&label=BitBucket)](https://bitbucket.org/harisekhon/spotify-tools/addon/pipelines/home#!/)
+[![GitLab Pipeline](https://img.shields.io/gitlab/pipeline/harisekhon/spotify-tools?logo=gitlab&label=GitLab)](https://gitlab.com/HariSekhon/spotify-tools/pipelines)
+[![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-blue?logo=github)](https://github.com/HariSekhon/spotify-tools)
+[![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-blue?logo=gitlab)](https://gitlab.com/HariSekhon/spotify-tools)
+[![Repo on BitBucket](https://img.shields.io/badge/repo-BitBucket-blue?logo=bitbucket)](https://bitbucket.org/HariSekhon/spotify-tools)
+
+[![CI Mac](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Mac/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Mac%22)
+[![CI Mac 10.15](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Mac%2010.15/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Mac+10.15%22)
+[![CI Ubuntu](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Ubuntu/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Ubuntu%22)
+[![CI Ubuntu 14.04](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Ubuntu%2014.04/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Ubuntu+14.04%22)
+[![CI Ubuntu 16.04](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Ubuntu%2016.04/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Ubuntu+16.04%22)
+[![CI Ubuntu 18.04](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Ubuntu%2018.04/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Ubuntu+18.04%22)
+[![CI Ubuntu 20.04](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Ubuntu%2020.04/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Ubuntu+20.04%22)
+[![CI Ubuntu GitHub](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Ubuntu%20GitHub/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Ubuntu+GitHub%22)
+[![CI Debian](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Debian/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Debian%22)
+[![CI Debian 8](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Debian%208/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Debian+8%22)
+[![CI Debian 9](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Debian%209/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Debian+9%22)
+[![CI Debian 10](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Debian%2010/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Debian+10%22)
+[![CI CentOS](https://github.com/HariSekhon/spotify-tools/workflows/CI%20CentOS/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+CentOS%22)
+[![CI CentOS 6](https://github.com/HariSekhon/spotify-tools/workflows/CI%20CentOS%206/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+CentOS+6%22)
+[![CI CentOS 7](https://github.com/HariSekhon/spotify-tools/workflows/CI%20CentOS%207/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+CentOS+7%22)
+[![CI CentOS 8](https://github.com/HariSekhon/spotify-tools/workflows/CI%20CentOS%208/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+CentOS+8%22)
+[![CI Fedora](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Fedora/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Fedora%22)
+[![CI Alpine](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Alpine/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Alpine%22)
+[![CI Alpine 3](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Alpine%203/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Alpine+3%22)
 
 Spotify Lookup - converts Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API. Works against lists of files or standard input as a unix filter program. Useful for keeping readable backups of your Spotify playlists.
 
