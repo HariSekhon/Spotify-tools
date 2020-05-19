@@ -270,7 +270,7 @@ git submodule update
 
 Then you will also need to fetch the following CPAN modules listed in `setup/cpan-requirements.txt` and `lib/setup/cpan-requirements.txt`:
 
-Running the cpan command followed by the list of modules (as root) will fetch them for you:
+Running the cpan command followed by the list of modules (as root) will fetch them for you, or you can use this script:
 
 ```
 bash-tools/perl_cpanm_install.sh setup/cpan-requirements.txt lib/setup/cpan-requirements.txt
