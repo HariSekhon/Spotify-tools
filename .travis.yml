@@ -16,7 +16,7 @@
 language: perl
 perl:
   # this build has thread support
-  - "5.28-shrplib"
+  - "5.26-shrplib"
   #- "5.20"
   - "5.10"
 
