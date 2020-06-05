@@ -27,12 +27,16 @@
     working_directory: "/buddy/spotify-tools"
     docker_image_name: "library/ubuntu"
     docker_image_tag: "18.04"
-    setup_commands:
-      - apt update
-      - apt install -qy git make
+    #setup_commands:
+    # this step gets cached, which results in
+    # E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+    #  - apt update
+    #  - apt install -qy git make
     execute_commands:
+      - setup/ci_bootstrap.sh
       - make init
-      - make ci test
+      - make ci
+      - make test
     volume_mappings:
       - "/:/buddy/spotify-tools"
     shell: "BASH"
