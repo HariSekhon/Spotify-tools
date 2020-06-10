@@ -70,6 +70,12 @@ Spotify Cmd - command line control of Spotify on Mac via AppleScript calls. Usef
 
 ### Quick Start ###
 
+If you want to recover an entire deleted playlist, you can do that quickly in the Spotify web interface -> Account -> [Recover Playlists](https://www.spotify.com/uk/account/recover-playlists/) page.
+
+For deleted songs in the desktop app, you can immediately press Control + Shift + Z on Windows or Control + Z on Mac to undo it.
+
+This repo is for everything else - Backups, Conversions from HTTP URIs to readable "Artist - Track" format, tracking individual songs removed from playlists over time etc.
+
 #### Ready to run Docker image #####
 
 These programs and their pre-compiled dependencies can be found ready to run on [DockerHub](https://hub.docker.com/r/harisekhon/spotify-tools/).
