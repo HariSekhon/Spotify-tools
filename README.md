@@ -129,7 +129,7 @@ as well as human readable "Artist - Track" format to `playlists/`
 
 2020-07-05 01:23:43  Stripping spotify playlist IDs from spotify/playlists.txt => playlists.txt
 
-2020-07-05 01:23:44  Backing up Spotify playlists to /Users/hari/github/playlists
+2020-07-05 01:23:44  Backing up Spotify playlists to /Users/hari/github/spotify-tools/playlists
 
 My Shazam Tracks => URIs => OK => Tracks => OK
 Upbeat & Sexual Pop => URIs => OK => Tracks => OK
