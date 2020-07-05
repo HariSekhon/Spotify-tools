@@ -114,10 +114,10 @@ Alternatively see the [Manual Setup](https://github.com/harisekhon/spotify-tools
 
 ### Backup Spotify Playlists
 
-Downloads the list of public playlists to playlists.txt and with Spotify playlist IDs to spotify/playlists.txt
+Downloads the list of public playlists to `playlists.txt` (names) and `spotify/playlists.txt` (IDs + names in TSV format)
 
-For each playlist, downloads the list of playlist tracks in both Spotify URI format (for restores) to `playlists/spotify`
-as well as human readable "Artist - Track" format to `playlists/`
+For each playlist, downloads the list of playlist tracks to a file of the same name in both human and Spotify usable formats
+`playlists/` files contain `Artist - Track` format, while `playlists/spotify/` files contain Spotify URI format (for restores)
 
 ```
 ./bash-tools/spotify_backup.sh
