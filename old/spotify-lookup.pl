@@ -14,9 +14,8 @@
 #  http://www.linkedin.com/in/harisekhon
 #
 
-# Spotify changed early 2016 and this program had to be upgraded
-#
-# https://developer.spotify.com/web-api/migration-guide/
+# Spotify changed early 2016 so this program has been superceded by a whole suite of Spotify tools in this
+# and the DevOps Bash tools repo (a submodule of this repo as bash-tools as the top level)
 
 $DESCRIPTION = "Filter program to convert Spotify URIs to 'Artist - Track' form by querying the Spotify Metadata API";
 
