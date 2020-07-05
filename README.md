@@ -74,7 +74,7 @@ A collection of Spotify API tools to make it easy to manage years of precious Sp
   - iterate any command against all playlists - command can be templated with playlist name or ID which will be auto-populated on each iteration
   - convert a playlist name to an ID or an ID to a playlist name
   - generate a Spotify API token (used by all other bash scripts)
-  - query any API endpoint with authentication (used by all other bash scripts)
+  - query any Spotify API endpoint with authentication (used by all other bash scripts)
 - ```spotify-cmd.pl``` - Spotify desktop app control from the command line on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as auto-nexting tracks every N seconds if you want to skip through sampling a playlist
 
 ### Quick Start ###
