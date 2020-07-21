@@ -121,9 +121,11 @@ Downloads the list of public playlists to `playlists.txt` (names) and `spotify/p
 
 For each playlist, downloads the list of playlist tracks to a file of the same name in both human and Spotify usable formats
 
-`playlists/` files contain `Artist - Track` format
+As it progresses, it outputs the playlist name followed by the progress of the URI download then the human readable download
 
-`playlists/spotify/` files contain Spotify URI format (for restores or copying to new playlists)
+`playlists/` files contain the human readable `Artist - Track` format
+
+`playlists/spotify/` files contain the Spotify URI format (for restores or copying to new playlists)
 
 ```
 ./bash-tools/spotify_backup.sh
@@ -137,33 +139,33 @@ For each playlist, downloads the list of playlist tracks to a file of the same n
 
 2020-07-05 01:23:44  Backing up Spotify playlists to /Users/hari/github/spotify-tools/playlists
 
-My Shazam Tracks => URIs => OK => Tracks => OK
-Upbeat & Sexual Pop => URIs => OK => Tracks => OK
-Best R&B => URIs => OK => Tracks => OK
-Best Pop => URIs => OK => Tracks => OK
-Best Rock => URIs => OK => Tracks => OK
-Best Motown / Funk / Boogie / Groove / Soul => URIs => OK => Tracks => OK
-Chill => URIs => OK => Tracks => OK
-2019 06-07 Venice & Budapest => URIs => OK => Tracks => OK
-2019 05 - Winchester => URIs => OK => Tracks => OK
-2019 04 April - Bath => URIs => OK => Tracks => OK
-2019 01 Jan - South Woodford => URIs => OK => Tracks => OK
-2018 10 Oct - Dec => URIs => OK => Tracks => OK
-2018 09 Sept - Dec => URIs => OK => Tracks => OK
-2018 09 Sept => URIs => OK => Tracks => OK
-2018 08 - Aug - Vienna => URIs => OK => Tracks => OK
-2018 Gemma => URIs => OK => Tracks => OK
-2018 03 March - July Mix => URIs => OK => Tracks => OK
-2018 03 Driving Rock => URIs => OK => Tracks => OK
-2018 02 Feb Mix - London => URIs => OK => Tracks => OK
-2018 Jan - London - A New Beginning => URIs => OK => Tracks => OK
-2017 12 December Mix - Back in London Baby => URIs => OK => Tracks => OK
-2017 11 November Mix - Copenhagen => URIs => OK => Tracks => OK
-2017 10 October Mix - Copenhagen => URIs => OK => Tracks => OK
-2017 09 September Mix - Copenhagen => URIs => OK => Tracks => OK
-2017 08 August Mix - London & Copenhagen => URIs => OK => Tracks => OK
-2017 07 July Mix - Johannesburg => URIs => OK => Tracks => OK
-2017 06 June Mix - Johannesburg => URIs => OK => Tracks => OK
+My Shazam Tracks => URIs OK => Tracks => OK
+Upbeat & Sexual Pop => URIs OK => Tracks OK
+Best R&B => URIs OK => Tracks OK
+Best Pop => URIs OK => Tracks OK
+Best Rock => URIs OK => Tracks OK
+Best Motown / Funk / Boogie / Groove / Soul => URIs OK => Tracks OK
+Chill => URIs OK => Tracks OK
+2019 06-07 Venice & Budapest => URIs OK => Tracks OK
+2019 05 - Winchester => URIs OK => Tracks OK
+2019 04 April - Bath => URIs OK => Tracks OK
+2019 01 Jan - South Woodford => URIs OK => Tracks OK
+2018 10 Oct - Dec => URIs OK => Tracks OK
+2018 09 Sept - Dec => URIs OK => Tracks OK
+2018 09 Sept => URIs OK => Tracks OK
+2018 08 - Aug - Vienna => URIs OK => Tracks OK
+2018 Gemma => URIs OK => Tracks OK
+2018 03 March - July Mix => URIs OK => Tracks OK
+2018 03 Driving Rock => URIs OK => Tracks OK
+2018 02 Feb Mix - London => URIs OK => Tracks OK
+2018 Jan - London - A New Beginning => URIs OK => Tracks OK
+2017 12 December Mix - Back in London Baby => URIs OK => Tracks OK
+2017 11 November Mix - Copenhagen => URIs OK => Tracks OK
+2017 10 October Mix - Copenhagen => URIs OK => Tracks OK
+2017 09 September Mix - Copenhagen => URIs OK => Tracks OK
+2017 08 August Mix - London & Copenhagen => URIs OK => Tracks OK
+2017 07 July Mix - Johannesburg => URIs OK => Tracks OK
+2017 06 June Mix - Johannesburg => URIs OK => Tracks OK
 ...
 2020-07-05 01:41:42  Spotify playlists backup finished in 1078 seconds
 ````
