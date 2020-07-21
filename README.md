@@ -64,7 +64,7 @@ Spotify Tools
 [![CI Alpine](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Alpine/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Alpine%22)
 [![CI Alpine 3](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Alpine%203/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Alpine+3%22)
 
-A collection of Spotify API tools to make it easy to manage years of precious Spotify playlists.
+A collection of Spotify API tools to make it easy to save and manage [Spotify playlists](https://github.com/harisekhon/spotify-playlists)
 
 - ```bash-tools/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
   - list all public playlists for any given user, even followed playlists
@@ -86,7 +86,7 @@ If you want to recover an entire deleted playlist, you can do that quickly in th
 
 For deleted songs in the desktop app, you can immediately press Control + Shift + Z on Windows or Control + Z on Mac to undo it.
 
-This repo is for everything else - Backups, Conversions from HTTP URIs to readable `Artist - Track` format, tracking individual songs removed from playlists over time etc.
+This repo is for everything else - Backups, Conversions from HTTP URIs to readable `Artist - Track` format, tracking individual songs removed from playlists over time (if Spotify loses the rights to them they silently disappear and you won't notice if not Git revision controlling them like my repo [Spotify Playlists](https://github.com/harisekhon/spotify-playists) etc.
 
 #### Ready to run Docker image #####
 
@@ -139,12 +139,23 @@ For each playlist, downloads the list of playlist tracks to a file of the same n
 
 My Shazam Tracks => URIs => OK => Tracks => OK
 Upbeat & Sexual Pop => URIs => OK => Tracks => OK
+Best R&B => URIs => OK => Tracks => OK
+Best Pop => URIs => OK => Tracks => OK
+Best Rock => URIs => OK => Tracks => OK
+Best Motown / Funk / Boogie / Groove / Soul => URIs => OK => Tracks => OK
+Chill => URIs => OK => Tracks => OK
 2019 06-07 Venice & Budapest => URIs => OK => Tracks => OK
 2019 05 - Winchester => URIs => OK => Tracks => OK
 2019 04 April - Bath => URIs => OK => Tracks => OK
 2019 01 Jan - South Woodford => URIs => OK => Tracks => OK
 2018 10 Oct - Dec => URIs => OK => Tracks => OK
+2018 09 Sept - Dec => URIs => OK => Tracks => OK
+2018 09 Sept => URIs => OK => Tracks => OK
+2018 08 - Aug - Vienna => URIs => OK => Tracks => OK
 2018 Gemma => URIs => OK => Tracks => OK
+2018 03 March - July Mix => URIs => OK => Tracks => OK
+2018 03 Driving Rock => URIs => OK => Tracks => OK
+2018 02 Feb Mix - London => URIs => OK => Tracks => OK
 2018 Jan - London - A New Beginning => URIs => OK => Tracks => OK
 2017 12 December Mix - Back in London Baby => URIs => OK => Tracks => OK
 2017 11 November Mix - Copenhagen => URIs => OK => Tracks => OK
@@ -199,7 +210,7 @@ Give the playlist file full of Spotify URIs (dumped by the spotify_backup*.sh sc
 spotify_set_tracks_uri_to_liked.sh playlists/spotify/My_Favourite_Playlist
 ```
 
-If you've been using Spotify a long time, you'll remember that marked songs used to be called `Starred`, but are now called `Liked Songs`. Unfortunately Spotify made `Starred` a regular playlist and didn't carry them over, but you can easily mark them all as `Liked Songs` like so to carry them over:
+If you've been using Spotify a long time, you'll remember that marked songs used to be called `Starred`, but were replaced by `Liked Songs`. Unfortunately Spotify made `Starred` a regular playlist and didn't carry them over, but you can easily mark all previously `Starred` songs as the newer `Liked Songs`:
 
 ```
 spotify_set_tracks_uri_to_liked.sh playlists/spotify/Starred
