@@ -66,13 +66,16 @@ Spotify Tools
 
 A collection of Spotify API tools to make it easy to manage years of precious Spotify playlists.
 
-- ```bash-tools/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts to
-  - list all public playlists for any given user
+- ```bash-tools/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
+  - list all public playlists for any given user, even followed playlists
+  - list all private playlists for the currently authorized user
   - backup all playlists or a selection of playlists by partial name or ID
-  - download playlist contents as track URIs / `Artists - Track` / CSV format
+  - download playlist contents as Spotify URIs / `Artists - Track` / CSV format
   - convert Spotify track URIs to human readable `Artist - Track` / CSV format
-  - iterate any command against all playlists - command can be templated with playlist name or ID which will be auto-populated on each iteration
-  - convert a playlist name to an ID or an ID to a playlist name
+  - iterate any command against all playlists - command can be templated with `{playlist}` name or `{playlist_id}` which will be auto-populated on each iteration
+  - convert a playlist name to an ID, or an ID to a playlist name
+  - search for tracks / artists / albums and output in either human readable form or as Spotify URIs for fast loading into the Spotify app or automated chaining with other adjacent tools
+  - list liked / top tracks / artists in either human readable form or as Spotify URIs
   - generate a Spotify API token (used by all other bash scripts)
   - query any Spotify API endpoint with authentication (used by all other bash scripts)
 - ```spotify-cmd.pl``` - Spotify desktop app control from the command line on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as auto-nexting tracks every N seconds if you want to skip through sampling a playlist
@@ -83,7 +86,7 @@ If you want to recover an entire deleted playlist, you can do that quickly in th
 
 For deleted songs in the desktop app, you can immediately press Control + Shift + Z on Windows or Control + Z on Mac to undo it.
 
-This repo is for everything else - Backups, Conversions from HTTP URIs to readable "Artist - Track" format, tracking individual songs removed from playlists over time etc.
+This repo is for everything else - Backups, Conversions from HTTP URIs to readable `Artist - Track` format, tracking individual songs removed from playlists over time etc.
 
 #### Ready to run Docker image #####
 
@@ -156,31 +159,50 @@ Upbeat & Sexual Pop => URIs => OK => Tracks => OK
 
 ### Convert Spotify URIs to Human readable Artist - Track
 
-You can copy and paste the tracks from the Spotify desktop app or web player directly into text files, which puts them in Spotify URI format such as
+You can copy and paste the tracks from the Spotify desktop app or web player directly into text files, which puts them in Spotify URI format such as:
 ```
 http://open.spotify.com/track/61oGXsKgJOI0e3uS2wg1BV
 http://open.spotify.com/track/1j6API7GnhE8MRRedK4bda
 http://open.spotify.com/track/0RxFoUhB3mAI3qpgLSf7eM
 ```
+or
+```
+spotify:track:61oGXsKgJOI0e3uS2wg1BV
+spotify:track:1j6API7GnhE8MRRedK4bda
+spotify:track:0RxFoUhB3mAI3qpgLSf7eM
+```
 
-Then convert this to readable Artist - Track form for saving independently of Spotify but running spotify-lookup.pl against the file
+Then convert this to readable `Artist - Track` form for saving independently of Spotify but running `spotify_uri_to_name.sh` against the file:
 
 ```
-./bash-tools/spotify_track_uri_to_name.sh < Pendulum.txt
+./bash-tools/spotify_uri_to_name.sh Pendulum.txt
 Pendulum - Watercolour
 Pendulum - Witchcraft
 Pendulum - The Island - Pt. I
 ...
 ```
 
-You can also pipe the file through standard input or even feed one or more Spotify URIs as standard input in either format that Spotify uses
+You can also pipe one or more Spotify URIs through standard input in either format that Spotify uses:
 
 ```
-echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify_track_uri_to_name.sh
+echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify_uri_to_name.sh
 Foo Fighters - Arlandria
 
-echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify_track_uri_to_name.sh
+echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify_uri_to_name.sh
 Foo Fighters - Arlandria
+```
+
+### Set all the tracks from your favourite playlist to "Liked"
+
+Give the playlist file full of Spotify URIs (dumped by the spotify_backup*.sh scripts above), you can mark all the songs from your favourite playlists as `Liked Songs` which then appear in your `Liked Songs` playlist too:
+```
+spotify_set_tracks_uri_to_liked.sh playlists/spotify/My_Favourite_Playlist
+```
+
+If you've been using Spotify a long time, you'll remember that marked songs used to be called `Starred`, but are now called `Liked Songs`. Unfortunately Spotify made `Starred` a regular playlist and didn't carry them over, but you can easily mark them all as `Liked Songs` like so to carry them over:
+
+```
+spotify_set_tracks_uri_to_liked.sh playlists/spotify/Starred
 ```
 
 ### Spotify Cmd --help ###
