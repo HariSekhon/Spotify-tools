@@ -139,7 +139,7 @@ As it progresses, it outputs the playlist name followed by the progress of the U
 
 2020-07-05 01:23:44  Backing up Spotify playlists to /Users/hari/github/spotify-tools/playlists
 
-My Shazam Tracks => URIs OK => Tracks => OK
+My Shazam Tracks => URIs OK => Tracks OK
 Upbeat & Sexual Pop => URIs OK => Tracks OK
 Best R&B => URIs OK => Tracks OK
 Best Pop => URIs OK => Tracks OK
