@@ -66,6 +66,15 @@ Spotify Tools
 
 A collection of Spotify API tools to make it easy to save and manage [Spotify playlists](https://github.com/harisekhon/spotify-playlists)
 
+Hari Sekhon
+
+Cloud & Big Data Architect, United Kingdom
+
+[![My LinkedIn](https://img.shields.io/badge/LinkedIn%20Profile-HariSekhon-blue?logo=linkedin)](https://www.linkedin.com/in/harisekhon/)
+###### (you're welcome to connect with me on LinkedIn)
+
+### Inventory
+
 - ```bash-tools/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
   - list all public playlists for any given user, even followed playlists
   - list all private playlists for the currently authorized user
