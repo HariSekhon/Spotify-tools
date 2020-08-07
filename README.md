@@ -71,6 +71,7 @@ Hari Sekhon
 Cloud & Big Data Architect, United Kingdom
 
 [![My LinkedIn](https://img.shields.io/badge/LinkedIn%20Profile-HariSekhon-blue?logo=linkedin)](https://www.linkedin.com/in/harisekhon/)
+[![Spotify Profile](https://img.shields.io/badge/Spotify%20Profile-HariSekhon-brightgreen?logo=spotify&style=social)](https://open.spotify.com/user/harisekhon)
 ###### (you're welcome to connect with me on LinkedIn)
 
 ### Inventory
