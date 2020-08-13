@@ -18,6 +18,11 @@ Spotify Tools
 [![Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux)](https://github.com/HariSekhon/spotify-tools#spotify-tools)
 [![Mac](https://img.shields.io/badge/OS-Mac-blue?logo=apple)](https://github.com/HariSekhon/spotify-tools#spotify-tools)
 
+[![CI Builds Overview](https://img.shields.io/badge/CI%20Builds-Overview%20Page-blue?logo=circleci?logo=circleci)](https://bitbucket.org/harisekhon/devops-bash-tools/src/master/STATUS.md)
+[![Jenkins](https://img.shields.io/badge/Jenkins-ready-blue?logo=jenkins?logo=jenkins)](https://github.com/HariSekhon/Spotify-tools/blob/master/Jenkinsfile)
+[![Concourse](https://img.shields.io/badge/Concourse-ready-blue?logo=concourse?logo=concourse)](https://github.com/HariSekhon/Spotify-tools/blob/master/.concourse.yml)
+[![GoCD](https://img.shields.io/badge/GoCD-ready-blue?logo=go?logo=go)](https://github.com/HariSekhon/Spotify-tools/blob/master/.gocd.yml)
+
 [![Travis CI](https://img.shields.io/travis/harisekhon/Spotify-tools/master?logo=travis&label=Travis)](https://travis-ci.org/HariSekhon/Spotify-tools)
 [![AppVeyor](https://img.shields.io/appveyor/build/harisekhon/Spotify-tools/master?logo=appveyor&label=AppVeyor)](https://ci.appveyor.com/project/HariSekhon/Spotify-tools/branch/master)
 [![Drone](https://img.shields.io/drone/build/HariSekhon/Spotify-tools/master?logo=drone&label=Drone)](https://cloud.drone.io/HariSekhon/Spotify-tools)
@@ -30,11 +35,6 @@ Spotify Tools
 [![Semaphore](https://harisekhon.semaphoreci.com/badges/Spotify-tools.svg)](https://harisekhon.semaphoreci.com/projects/Spotify-tools)
 [![Wercker](https://app.wercker.com/status/c46a517909343e278c9ce354164394ae/s/master "wercker status")](https://app.wercker.com/harisekhon/Spotify-tools/runs)
 <!--[![Wercker](https://img.shields.io/wercker/ci/5ec40277728d7f43001aa790/master?label=Wercker&logo=oracle)](https://app.wercker.com/harisekhon/Spotify-tools/runs)-->
-
-[![Jenkins](https://img.shields.io/badge/Jenkins-ready-blue?logo=jenkins?logo=jenkins)](https://github.com/HariSekhon/Spotify-tools/blob/master/Jenkinsfile)
-[![Concourse](https://img.shields.io/badge/Concourse-ready-blue?logo=concourse?logo=concourse)](https://github.com/HariSekhon/Spotify-tools/blob/master/.concourse.yml)
-[![GoCD](https://img.shields.io/badge/GoCD-ready-blue?logo=go?logo=go)](https://github.com/HariSekhon/Spotify-tools/blob/master/.gocd.yml)
-[![CI Builds Overview](https://img.shields.io/badge/CI%20Builds-Overview%20Page-blue?logo=circleci?logo=circleci)](https://bitbucket.org/harisekhon/devops-bash-tools/src/master/STATUS.md)
 
 [![Azure DevOps](https://dev.azure.com/harisekhon/GitHub/_apis/build/status/HariSekhon.spotify-tools?branchName=master)](https://dev.azure.com/harisekhon/GitHub/_build/latest?definitionId=3&branchName=master)
 [![BitBucket Pipeline](https://img.shields.io/bitbucket/pipelines/harisekhon/spotify-tools/master?logo=bitbucket&label=BitBucket)](https://bitbucket.org/harisekhon/spotify-tools/addon/pipelines/home#!/)
