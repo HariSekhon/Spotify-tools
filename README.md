@@ -38,7 +38,7 @@ Spotify Tools
 
 [![Azure DevOps](https://dev.azure.com/harisekhon/GitHub/_apis/build/status/HariSekhon.spotify-tools?branchName=master)](https://dev.azure.com/harisekhon/GitHub/_build/latest?definitionId=3&branchName=master)
 [![BitBucket Pipeline](https://img.shields.io/bitbucket/pipelines/harisekhon/spotify-tools/master?logo=bitbucket&label=BitBucket)](https://bitbucket.org/harisekhon/spotify-tools/addon/pipelines/home#!/)
-[![GitLab Pipeline](https://img.shields.io/gitlab/pipeline/harisekhon/spotify-tools?logo=gitlab&label=GitLab)](https://gitlab.com/HariSekhon/spotify-tools/pipelines)
+[![GitLab Pipeline](https://img.shields.io/gitlab/pipeline/harisekhon/spotify-tools?logo=gitlab&label=GitLab%20CI)](https://gitlab.com/HariSekhon/spotify-tools/pipelines)
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-blue?logo=github)](https://github.com/HariSekhon/spotify-tools)
 [![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-blue?logo=gitlab)](https://gitlab.com/HariSekhon/spotify-tools)
 [![Repo on BitBucket](https://img.shields.io/badge/repo-BitBucket-blue?logo=bitbucket)](https://bitbucket.org/HariSekhon/spotify-tools)
