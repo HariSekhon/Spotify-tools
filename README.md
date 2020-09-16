@@ -63,6 +63,8 @@ Spotify Tools
 [![CI Alpine](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Alpine/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Alpine%22)
 [![CI Alpine 3](https://github.com/HariSekhon/spotify-tools/workflows/CI%20Alpine%203/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22CI+Alpine+3%22)
 
+[git.io/spotify](https://git.io/spotify)
+
 A collection of Spotify API tools to make it easy to save and manage [Spotify playlists](https://github.com/harisekhon/spotify-playlists)
 
 Hari Sekhon
