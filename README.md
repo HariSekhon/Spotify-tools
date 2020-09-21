@@ -65,7 +65,11 @@ Spotify Tools
 
 [git.io/spotify](https://git.io/spotify)
 
-A collection of Spotify tools to make it easy to query and control Spotify, backup all your Spotify playlists, keep human-readable copies of your playlists to port to another music system etc.
+Spotify tools to make it easy to:
+
+- query and control Spotify
+- backup all your Spotify playlists
+- keep human-readable copies of your playlists to port to another music system
 
 My epic [Spotify Playlists](https://github.com/harisekhon/spotify-playlists) collection (recently open sourced) uses this heavily.
 
