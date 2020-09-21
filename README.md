@@ -69,7 +69,7 @@ Spotify tools to make it easy to:
 
 - query and control Spotify
 - backup all your Spotify playlists
-- keep human-readable copies of your playlists to port to another music system
+- keep human-readable `Artist - Track` playlists (could migrate to another music system)
 
 My epic [Spotify Playlists](https://github.com/harisekhon/spotify-playlists) collection (recently open sourced) uses this heavily.
 
