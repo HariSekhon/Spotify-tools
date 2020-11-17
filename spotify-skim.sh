@@ -24,7 +24,7 @@ bash_tools="$srcdir/bash-tools"
 
 # shellcheck disable=SC2034,SC2154
 usage_description="
-Uses 'spotify' osascript to skim through current Spotify playlist
+Uses Shpotify to skim through current Spotify playlist
 
 spotify is assumed to be in \$PATH
 
@@ -35,12 +35,20 @@ Useful for quickly going through Discover Backlog
 # shellcheck disable=SC2034
 usage_args=""
 
+spotify play
+
 while true; do
-    spotify info
-    for track_position in 30 60 90 120; do
+    # SpotifyControl
+    #spotify info
+    # Shpotify
+    spotify status
+    for track_position in 30 60 90 120 150; do
+        # osascript from install_spotifycontrol.sh
         # this doesn't work and actually jumps to this position N, not current+N
         #spotify forward 30
-        spotify jump "$track_position"
+        #spotify jump "$track_position"
+        # Shpotify
+        spotify pos "$track_position"
         sleep 2
     done
     spotify next
