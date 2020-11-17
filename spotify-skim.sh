@@ -37,10 +37,20 @@ usage_args=""
 
 spotify play
 
+is_paused(){
+    # spotify command sends a pipefail failure which causes the ! is_paused conditional to fail and runs the next track which unpauses
+    { spotify status || : ; } | grep -Fq 'Spotify is currently paused'
+}
+
 while true; do
     # SpotifyControl
     #spotify info
     # Shpotify
+    if is_paused; then
+        timestamp "Spotify is paused, waiting"
+        sleep 30
+        continue
+    fi
     spotify status
     for track_position in 30 60 90 120 150; do
         # osascript from install_spotifycontrol.sh
@@ -51,6 +61,9 @@ while true; do
         spotify pos "$track_position"
         sleep 2
     done
-    spotify next
-    echo
+    if ! is_paused; then
+        # this ends up unpausing Spotify so don't call it if paused
+        spotify next
+        echo
+    fi
 done
