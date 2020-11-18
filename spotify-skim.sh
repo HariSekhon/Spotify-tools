@@ -29,11 +29,19 @@ Uses Shpotify to skim through current Spotify playlist
 spotify is assumed to be in \$PATH
 
 Useful for quickly going through Discover Backlog
+
+Optional argument: seconds interval - how long to listen before skipping to the next 30 second boundary in the track (default: 3 seconds)
 "
 
 # used by usage() in lib/utils.sh
 # shellcheck disable=SC2034
-usage_args=""
+usage_args="[<seconds_interval>]"
+
+interval="${1:-3}"
+
+if ! is_int "$interval"; then
+    usage "interval must be an integer"
+fi
 
 spotify play
 
@@ -60,7 +68,7 @@ while true; do
         #spotify jump "$track_position"
         # Shpotify
         spotify pos "$track_position"
-        sleep 3
+        sleep "$interval"
     done
     if ! is_paused; then
         # this ends up unpausing Spotify so don't call it if paused
