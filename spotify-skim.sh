@@ -60,7 +60,7 @@ while true; do
         #spotify jump "$track_position"
         # Shpotify
         spotify pos "$track_position"
-        sleep 2
+        sleep 3
     done
     if ! is_paused; then
         # this ends up unpausing Spotify so don't call it if paused
