@@ -104,7 +104,7 @@ sub normalize ($) {
     s/( - .+) - Live$/$1/i;
     # cuts down on variations to just strip all apostrophes since a lot of compilation song names don't get them right
     #s/'\s/ /g;
-    s/'/ /g;
+    #s/'/ /g;
     s/\?*$//;
     #s/rmx/Remix/i;
     # added extraction of featuring => artist
