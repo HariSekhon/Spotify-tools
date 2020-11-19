@@ -22,8 +22,8 @@ bash_tools="$srcdir/bash-tools"
 # shellcheck disable=SC1090
 . "$bash_tools/lib/utils.sh"
 
-default_sleep_secs=2
-default_track_positions="60 120"
+default_sleep_secs=3
+default_track_positions="30 60 90 120 150"
 
 # shellcheck disable=SC2034,SC2154
 usage_description="
