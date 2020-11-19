@@ -37,6 +37,18 @@ Optional arguments:
 
 - seconds before skipping to next interval - how long to listen before skipping to the next position (default: $default_sleep_secs seconds)
 - intervals - comma or space separated list of positions in tracks to skip to (default: $default_track_positions. For example 30 60 90 120 150 means track positions 0:30 1;00 1:30 2:00 2:30)
+
+Examples:
+
+Default:
+
+    ${0##*/}
+
+    ${0##*/} $default_sleep_secs $default_track_positions
+
+Faster more aggressive skipping - listen for only 2 secs at the 1 and 2 minutes marks of each track (60 and 120 seconds track positions):
+
+    ${0##*/} 2 60 120
 "
 
 # used by usage() in lib/utils.sh
