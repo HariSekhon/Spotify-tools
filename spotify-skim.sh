@@ -30,17 +30,32 @@ spotify is assumed to be in \$PATH
 
 Useful for quickly going through Discover Backlog
 
-Optional argument: seconds interval - how long to listen before skipping to the next 30 second boundary in the track (default: 3 seconds)
+Optional arguments:
+
+- seconds before skipping to next interval - how long to listen before skipping to the next position (default: 3 seconds)
+- intervals - comma or space separated list of positions in tracks to skip to (default: 30 60 90 120 150 seconds - meaning track positions 0:30 1;00 1:30 2:00 2:30)
 "
 
 # used by usage() in lib/utils.sh
 # shellcheck disable=SC2034
-usage_args="[<seconds_interval>]"
+usage_args="[<seconds>] [<intervals>]"
 
 interval="${1:-3}"
+shift || :
 
 if ! is_int "$interval"; then
     usage "interval must be an integer"
+fi
+
+if [ $# -gt 0 ]; then
+    track_positions=("$@")
+    for track_position in "${track_positions[@]}"; do
+        if ! is_int "$track_position"; then
+            usage "Invalid track position given, must be an integer of seconds: $track_position"
+        fi
+    done
+else
+    track_positions=(30 60 90 120 150)
 fi
 
 spotify play
@@ -61,7 +76,7 @@ while true; do
         sleep 30
         continue
     fi
-    for track_position in 30 60 90 120 150; do
+    for track_position in "${track_positions[@]}"; do
         # osascript from install_spotifycontrol.sh
         # this doesn't work and actually jumps to this position N, not current+N
         #spotify forward 30
@@ -70,9 +85,14 @@ while true; do
         spotify pos "$track_position"
         sleep "$interval"
     done
+    # next ends up unpausing Spotify so don't call it if paused
     if ! is_paused; then
-        # this ends up unpausing Spotify so don't call it if paused
-        spotify next
-        echo
+        # background it because otherwise there is a 1 second delay where the next track plays the start before skipping to the first position
+        # due to the time it takes to run the next is_paused check
+        {
+            echo
+            spotify next
+            echo
+        } &
     fi
 done
