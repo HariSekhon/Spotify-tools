@@ -22,6 +22,9 @@ bash_tools="$srcdir/bash-tools"
 # shellcheck disable=SC1090
 . "$bash_tools/lib/utils.sh"
 
+default_sleep_secs=2
+default_track_positions="60 120"
+
 # shellcheck disable=SC2034,SC2154
 usage_description="
 Uses Shpotify to skim through current Spotify playlist
@@ -32,18 +35,20 @@ Useful for quickly going through Discover Backlog
 
 Optional arguments:
 
-- seconds before skipping to next interval - how long to listen before skipping to the next position (default: 3 seconds)
-- intervals - comma or space separated list of positions in tracks to skip to (default: 30 60 90 120 150 seconds - meaning track positions 0:30 1;00 1:30 2:00 2:30)
+- seconds before skipping to next interval - how long to listen before skipping to the next position (default: $default_sleep_secs seconds)
+- intervals - comma or space separated list of positions in tracks to skip to (default: $default_track_positions. For example 30 60 90 120 150 means track positions 0:30 1;00 1:30 2:00 2:30)
 "
 
 # used by usage() in lib/utils.sh
 # shellcheck disable=SC2034
 usage_args="[<seconds>] [<intervals>]"
 
-interval="${1:-3}"
+help_usage "$@"
+
+sleep_secs="${1:-3}"
 shift || :
 
-if ! is_int "$interval"; then
+if ! is_int "$sleep_secs"; then
     usage "interval must be an integer"
 fi
 
@@ -55,7 +60,7 @@ if [ $# -gt 0 ]; then
         fi
     done
 else
-    track_positions=(30 60 90 120 150)
+    read -r -a track_positions <<< "$default_track_positions"
 fi
 
 spotify play
@@ -83,7 +88,7 @@ while true; do
         #spotify jump "$track_position"
         # Shpotify
         spotify pos "$track_position"
-        sleep "$interval"
+        sleep "$sleep_secs"
     done
     # next ends up unpausing Spotify so don't call it if paused
     if ! is_paused; then
