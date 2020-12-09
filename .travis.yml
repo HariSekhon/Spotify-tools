@@ -13,6 +13,16 @@
 #  http://www.linkedin.com/in/harisekhon
 #
 
+# ============================================================================ #
+#                               T r a v i s   C I
+# ============================================================================ #
+
+# https://docs.travis-ci.com/user/customizing-the-build/
+
+version: ~> 1.0
+
+# ===============================================
+# https://docs.travis-ci.com/user/languages/perl/
 language: perl
 perl:
   # this build has thread support
@@ -20,19 +30,39 @@ perl:
   #- "5.20"
   - "5.10"
 
-sudo: required
+# ======================================================
+# https://docs.travis-ci.com/user/environment-variables/
+#env:
+#  - DEBUG=1
 
+# ==============================================
+# https://docs.travis-ci.com/user/notifications/
 notifications:
   email: false
 
-branches:
-  only:
-    - master
+# =================================================================================
+# https://docs.travis-ci.com/user/customizing-the-build/#building-specific-branches
+# https://docs.travis-ci.com/user/conditional-builds-stages-jobs
+#branches:
+#  only:
+#    - master
+
+# ========================================
+# https://docs.travis-ci.com/user/caching/
+
+#before_cache:
+#  - test -f pytools_checks/Makefile || rm -fr pytools_checks
 
 cache:
-  directories:
-    - .cpanm
-    - .cpan
+  - pip
+  - directories:
+    - $HOME/.cache
+    - $HOME/.cpanm
+    - $HOME/.cpan
+    - pytools_checks
+
+# ==============================================
+# https://docs.travis-ci.com/user/job-lifecycle/
 
 install:
   #- pushd lib
