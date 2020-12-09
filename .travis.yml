@@ -50,9 +50,6 @@ notifications:
 # ========================================
 # https://docs.travis-ci.com/user/caching/
 
-#before_cache:
-#  - test -f pytools_checks/Makefile || rm -fr pytools_checks
-
 cache:
   - pip
   - directories:
