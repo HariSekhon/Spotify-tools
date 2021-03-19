@@ -35,6 +35,7 @@ Spotify Tools
 [![Cirrus CI](https://img.shields.io/cirrus/github/HariSekhon/Spotify-tools/master?logo=Cirrus%20CI&label=Cirrus%20CI)](https://cirrus-ci.com/github/HariSekhon/Spotify-tools)
 [![Semaphore](https://harisekhon.semaphoreci.com/badges/Spotify-tools.svg)](https://harisekhon.semaphoreci.com/projects/Spotify-tools)
 [![Wercker](https://app.wercker.com/status/c46a517909343e278c9ce354164394ae/s/master "wercker status")](https://app.wercker.com/harisekhon/Spotify-tools/runs)
+[![Buddy](https://img.shields.io/badge/Buddy-ready-1A86FD?logo=buddy)](https://github.com/HariSekhon/Spotify-tools/blob/master/buddy.yml)
 <!--[![Wercker](https://img.shields.io/wercker/ci/5ec40277728d7f43001aa790/master?label=Wercker&logo=oracle)](https://app.wercker.com/harisekhon/Spotify-tools/runs)-->
 
 [![Azure DevOps](https://dev.azure.com/harisekhon/GitHub/_apis/build/status/HariSekhon.spotify-tools?branchName=master)](https://dev.azure.com/harisekhon/GitHub/_build/latest?definitionId=3&branchName=master)
