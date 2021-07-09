@@ -24,7 +24,7 @@ Spotify Tools
 [![GoCD](https://img.shields.io/badge/GoCD-ready-blue?logo=go)](https://github.com/HariSekhon/Spotify-tools/blob/master/.gocd.yml)
 [![TeamCity](https://img.shields.io/badge/TeamCity-ready-blue?logo=teamcity)](https://github.com/HariSekhon/TeamCity-CI)
 
-[![Travis CI](https://img.shields.io/travis/harisekhon/Spotify-tools/master?logo=travis&label=Travis%20CI)](https://travis-ci.org/HariSekhon/Spotify-tools)
+[![Travis CI](https://img.shields.io/badge/TravisCI-legacy-lightgrey?logo=travis&label=Travis%20CI)](https://github.com/HariSekhon/Spotify-tools/blob/master/.travis.yml)
 [![AppVeyor](https://img.shields.io/appveyor/build/harisekhon/Spotify-tools/master?logo=appveyor&label=AppVeyor)](https://ci.appveyor.com/project/HariSekhon/Spotify-tools/branch/master)
 [![Drone](https://img.shields.io/drone/build/HariSekhon/Spotify-tools/master?logo=drone&label=Drone)](https://cloud.drone.io/HariSekhon/Spotify-tools)
 [![CircleCI](https://circleci.com/gh/HariSekhon/Spotify-tools.svg?style=svg)](https://circleci.com/gh/HariSekhon/Spotify-tools)
