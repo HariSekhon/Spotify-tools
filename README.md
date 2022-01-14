@@ -1,7 +1,7 @@
 Spotify Tools
 =============
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bf879eba5f1c4fd89f92b0f9407b345e)](https://www.codacy.com/app/harisekhon/spotify-tools)
+[![Codacy](https://app.codacy.com/project/badge/Grade/afe697b0ce3f4df79f16b4b3d2ded54b)](https://www.codacy.com/gh/HariSekhon/Spotify-tools/dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/harisekhon/spotify-tools/badge)](https://www.codefactor.io/repository/github/harisekhon/spotify-tools)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=alert_status)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
