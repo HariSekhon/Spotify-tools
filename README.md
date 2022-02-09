@@ -10,6 +10,7 @@ Spotify Tools
 [![GitHub stars](https://img.shields.io/github/stars/harisekhon/spotify-tools?logo=github)](https://github.com/harisekhon/spotify-tools/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/harisekhon/spotify-tools?logo=github)](https://github.com/harisekhon/spotify-tools/network)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/HariSekhon/Spotify-Tools?logo=github)](https://github.com/HariSekhon/Spotify-Tools/commits/master)
+[![License](https://img.shields.io/github/license/HariSekhon/Spotify-tools)](https://github.com/HariSekhon/Spotify-tools/blob/master/LICENSE)
 <!--
 [![DockerHub](https://img.shields.io/badge/docker-available-blue?logo=docker&logoColor=white)](https://hub.docker.com/r/harisekhon/nagios-plugins/)
 [![](https://images.microbadger.com/badges/image/harisekhon/spotify-tools.svg)](http://microbadger.com/#/images/harisekhon/spotify-tools)
