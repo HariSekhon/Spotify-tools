@@ -25,7 +25,6 @@ Spotify Tools
 [![GoCD](https://img.shields.io/badge/GoCD-ready-blue?logo=go)](https://github.com/HariSekhon/Spotify-tools/blob/master/.gocd.yml)
 [![TeamCity](https://img.shields.io/badge/TeamCity-ready-blue?logo=teamcity)](https://github.com/HariSekhon/TeamCity-CI)
 
-[![Travis CI](https://img.shields.io/badge/TravisCI-legacy-lightgrey?logo=travis&label=Travis%20CI)](https://github.com/HariSekhon/Spotify-tools/blob/master/.travis.yml)
 [![AppVeyor](https://img.shields.io/appveyor/build/harisekhon/Spotify-tools/master?logo=appveyor&label=AppVeyor)](https://ci.appveyor.com/project/HariSekhon/Spotify-tools/branch/master)
 [![Drone](https://img.shields.io/drone/build/HariSekhon/Spotify-tools/master?logo=drone&label=Drone)](https://cloud.drone.io/HariSekhon/Spotify-tools)
 [![CircleCI](https://circleci.com/gh/HariSekhon/Spotify-tools.svg?style=svg)](https://circleci.com/gh/HariSekhon/Spotify-tools)
@@ -37,6 +36,7 @@ Spotify Tools
 [![Semaphore](https://harisekhon.semaphoreci.com/badges/Spotify-tools.svg)](https://harisekhon.semaphoreci.com/projects/Spotify-tools)
 [![Wercker](https://app.wercker.com/status/c46a517909343e278c9ce354164394ae/s/master "wercker status")](https://app.wercker.com/harisekhon/Spotify-tools/runs)
 [![Buddy](https://img.shields.io/badge/Buddy-ready-1A86FD?logo=buddy)](https://github.com/HariSekhon/Spotify-tools/blob/master/buddy.yml)
+[![Travis CI](https://img.shields.io/badge/TravisCI-legacy-lightgrey?logo=travis&label=Travis%20CI)](https://github.com/HariSekhon/Spotify-tools/blob/master/.travis.yml)
 <!--[![Wercker](https://img.shields.io/wercker/ci/5ec40277728d7f43001aa790/master?label=Wercker&logo=oracle)](https://app.wercker.com/harisekhon/Spotify-tools/runs)-->
 
 [![Azure DevOps](https://dev.azure.com/harisekhon/GitHub/_apis/build/status/HariSekhon.spotify-tools?branchName=master)](https://dev.azure.com/harisekhon/GitHub/_build/latest?definitionId=3&branchName=master)
