@@ -29,13 +29,13 @@ Spotify Tools
 [![Drone](https://img.shields.io/drone/build/HariSekhon/Spotify-tools/master?logo=drone&label=Drone)](https://cloud.drone.io/HariSekhon/Spotify-tools)
 [![CircleCI](https://circleci.com/gh/HariSekhon/Spotify-tools.svg?style=svg)](https://circleci.com/gh/HariSekhon/Spotify-tools)
 [![Codeship Status for HariSekhon/Spotify-tools](https://app.codeship.com/projects/44957fe0-3c5f-0138-07d2-66210e546d42/status?branch=master)](https://app.codeship.com/projects/387244)
-[![Shippable](https://img.shields.io/shippable/5e52c637b15ffc00071d8f84/master?label=Shippable&logo=jfrog)](https://app.shippable.com/github/HariSekhon/Spotify-tools/dashboard/jobs)
 [![BuildKite](https://img.shields.io/buildkite/cb0dcf2e1eed7a2c3d6035b8c5ca1bf4a741c1153b89688fcf/master?label=BuildKite&logo=buildkite)](https://buildkite.com/hari-sekhon/Spotify-tools)
 [![Codefresh](https://g.codefresh.io/api/badges/pipeline/harisekhon/GitHub%2FSpotify-tools?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWU1MmM5OGNiM2FiOWUzM2Y3ZDZmYjM3.O69674cW7vYom3v5JOGKXDbYgCVIJU9EWhXUMHl3zwA&type=cf-1)](https://g.codefresh.io/pipelines/edit/new/builds?id=5ec401171350573576125f8d&pipeline=Spotify-tools&projects=GitHub&projectId=5e52ca8ea284e00f882ea992&rightbar=steps&advanced=0&context=github&filter=page:1;pageSize:10;timeFrameStart:week)
 [![Cirrus CI](https://img.shields.io/cirrus/github/HariSekhon/Spotify-tools/master?logo=Cirrus%20CI&label=Cirrus%20CI)](https://cirrus-ci.com/github/HariSekhon/Spotify-tools)
 [![Semaphore](https://harisekhon.semaphoreci.com/badges/Spotify-tools.svg)](https://harisekhon.semaphoreci.com/projects/Spotify-tools)
 [![Wercker](https://app.wercker.com/status/c46a517909343e278c9ce354164394ae/s/master "wercker status")](https://app.wercker.com/harisekhon/Spotify-tools/runs)
 [![Buddy](https://img.shields.io/badge/Buddy-ready-1A86FD?logo=buddy)](https://github.com/HariSekhon/Spotify-tools/blob/master/buddy.yml)
+[![Shippable](https://img.shields.io/badge/Shippable-legacy-lightgrey?logo=jfrog&label=Shippable)](https://github.com/HariSekhon/Spotify-tools/blob/master/shippable.yml)
 [![Travis CI](https://img.shields.io/badge/TravisCI-legacy-lightgrey?logo=travis&label=Travis%20CI)](https://github.com/HariSekhon/Spotify-tools/blob/master/.travis.yml)
 <!--[![Wercker](https://img.shields.io/wercker/ci/5ec40277728d7f43001aa790/master?label=Wercker&logo=oracle)](https://app.wercker.com/harisekhon/Spotify-tools/runs)-->
 
