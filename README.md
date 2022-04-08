@@ -1,18 +1,19 @@
 Spotify Tools
 =============
 
+[![GitHub stars](https://img.shields.io/github/stars/harisekhon/spotify-tools?logo=github)](https://github.com/harisekhon/spotify-tools/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/harisekhon/spotify-tools?logo=github)](https://github.com/harisekhon/spotify-tools/network)
+[![License](https://img.shields.io/github/license/HariSekhon/Spotify-tools)](https://github.com/HariSekhon/Spotify-tools/blob/master/LICENSE)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/HariSekhon/Spotify-Tools?logo=github)](https://github.com/HariSekhon/Spotify-Tools/commits/master)
+
 [![Codacy](https://app.codacy.com/project/badge/Grade/afe697b0ce3f4df79f16b4b3d2ded54b)](https://www.codacy.com/gh/HariSekhon/Spotify-tools/dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/harisekhon/spotify-tools/badge)](https://www.codefactor.io/repository/github/harisekhon/spotify-tools)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=alert_status)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=security_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
-[![GitHub stars](https://img.shields.io/github/stars/harisekhon/spotify-tools?logo=github)](https://github.com/harisekhon/spotify-tools/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/harisekhon/spotify-tools?logo=github)](https://github.com/harisekhon/spotify-tools/network)
 [![Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux)](https://github.com/HariSekhon/spotify-tools#spotify-tools)
 [![Mac](https://img.shields.io/badge/OS-Mac-blue?logo=apple)](https://github.com/HariSekhon/spotify-tools#spotify-tools)
-[![License](https://img.shields.io/github/license/HariSekhon/Spotify-tools)](https://github.com/HariSekhon/Spotify-tools/blob/master/LICENSE)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/HariSekhon/Spotify-Tools?logo=github)](https://github.com/HariSekhon/Spotify-Tools/commits/master)
 
 <!--
 [![DockerHub](https://img.shields.io/badge/docker-available-blue?logo=docker&logoColor=white)](https://hub.docker.com/r/harisekhon/nagios-plugins/)
