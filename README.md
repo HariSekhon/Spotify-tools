@@ -52,6 +52,7 @@ Spotify Tools
 [![Repo on BitBucket](https://img.shields.io/badge/repo-BitBucket-0052CC?logo=bitbucket)](https://bitbucket.org/HariSekhon/Spotify-tools)
 [![Validation](https://github.com/HariSekhon/Spotify-tools/actions/workflows/validate.yaml/badge.svg)](https://github.com/HariSekhon/Spotify-tools/actions/workflows/validate.yaml)
 [![Semgrep](https://github.com/HariSekhon/Spotify-tools/actions/workflows/semgrep.yaml/badge.svg)](https://github.com/HariSekhon/Spotify-tools/actions/workflows/semgrep.yaml)
+[![Kics](https://github.com/HariSekhon/Spotify-tools/actions/workflows/kics.yaml/badge.svg)](https://github.com/HariSekhon/Spotify-tools/actions/workflows/kics.yaml)
 
 [![GitHub Actions Ubuntu](https://github.com/HariSekhon/spotify-tools/workflows/GitHub%20Actions%20Ubuntu/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22GitHub+Actions+Ubuntu%22)
 [![Mac](https://github.com/HariSekhon/spotify-tools/workflows/Mac/badge.svg)](https://github.com/HariSekhon/spotify-tools/actions?query=workflow%3A%22Mac%22)
