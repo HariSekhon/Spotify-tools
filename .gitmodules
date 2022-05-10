@@ -3,5 +3,5 @@
 	url = https://github.com/HariSekhon/lib
 [submodule "bash-tools"]
 	path = bash-tools
-	url = https://github.com/harisekhon/bash-tools
+	url = https://github.com/HariSekhon/DevOps-Bash-tools
 	branch = master
