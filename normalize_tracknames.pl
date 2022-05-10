@@ -5,7 +5,7 @@
 #  Date: 2013-05-12 22:35:49 +0100 (Sun, 12 May 2013)
 #  (split off from find_missing.sh)
 #
-#  https://github.com/harisekhon/spotify-tools
+#  https://github.com/HariSekhon/Spotify-tools
 #
 #  License: see accompanying Hari Sekhon LICENSE file
 #

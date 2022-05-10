@@ -4,7 +4,7 @@
 #  Author: Hari Sekhon
 #  Date: 2020-11-17 11:34:22 +0000 (Tue, 17 Nov 2020)
 #
-#  https://github.com/HariSekhon/spotify-tools
+#  https://github.com/HariSekhon/Spotify-tools
 #
 #  License: see accompanying Hari Sekhon LICENSE file
 #
