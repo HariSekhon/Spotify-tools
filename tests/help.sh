@@ -19,17 +19,20 @@ srcdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd "$srcdir/..";
 
-. ./tests/utils.sh
+# shellcheck disable=SC1090
+. "$srcdir/../tests/utils.sh"
 
 for x in $(echo ./*.pl ./*.py ./*.rb 2>/dev/null); do
     isExcluded "$x" && continue
     set +e
     optional_cmd=""
     if [[ $x =~ .*\.pl$ ]]; then
+        # defined in utils.sh
+        # shellcheck disable=SC2154
         optional_cmd="perl -T $I_lib"
     fi
-    echo $optional_cmd ./$x --help
-    $optional_cmd ./$x --help # >/dev/null
+    echo "$optional_cmd ./$x --help"
+    $optional_cmd ./"$x" --help # >/dev/null
     status=$?
     set -e
     [ $status = 3 ] || { echo "status code for $x --help was $status not expected 3"; exit 1; }
