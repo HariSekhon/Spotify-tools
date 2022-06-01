@@ -21,7 +21,9 @@ set -eu
 [ -n "${DEBUG:-}" ] && set -x
 
 isExcluded(){
-    local prog="$1" 
+    local prog="$1"
+    # false positive
+    # shellcheck disable=SC2049
     [[ "$prog" =~ ^\* ]] && return 0
     commit="$(git log "$prog" | head -n1 | grep 'commit')"
     if [ -z "$commit" ]; then
