@@ -30,16 +30,17 @@ if [ -n "${PERLBREW_PERL:-}" ]; then
     PERL_VERSION="${PERLBREW_PERL/perl-/}"
 
     # For Travis CI which installs modules locally
-    export PERL5LIB=$(echo \
-        ${PERL5LIB:-.} \
-        $PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/site_perl/$PERL_VERSION/x86_64-linux \
-        $PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/site_perl/$PERL_VERSION/darwin-2level \
-        $PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/site_perl/$PERL_VERSION \
-        $PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/$PERL_VERSION/x86_64-linux \
-        $PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/$PERL_VERSION/darwin-2level \
-        $PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/$PERL_VERSION \
+    PERL5LIB=$(echo \
+        "${PERL5LIB:-.}" \
+        "$PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/site_perl/$PERL_VERSION/x86_64-linux" \
+        "$PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/site_perl/$PERL_VERSION/darwin-2level" \
+        "$PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/site_perl/$PERL_VERSION" \
+        "$PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/$PERL_VERSION/x86_64-linux" \
+        "$PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/$PERL_VERSION/darwin-2level" \
+        "$PERLBREW_ROOT/perls/$PERLBREW_PERL/lib/$PERL_VERSION" \
         | tr '\n' ':'
     )
+    export PERL5LIB
 
     for x in $(echo "$PERL5LIB" | tr ':' ' '); do
         I_lib+="-I $x "
@@ -55,19 +56,23 @@ if [ -n "${PERLBREW_PERL:-}" ]; then
         # BEGIN failed--compilation aborted at ./check_riak_diag.pl line 25.
     #perl=perl
     perl="$PERLBREW_ROOT/perls/$PERLBREW_PERL/bin/perl"
+    # shellcheck disable=SC2016
     PERL_MAJOR_VERSION="$($perl -v | $perl -ne '/This is perl (\d+), version (\d+),/ && print "$1.$2"')"
 else
-    sudo=""
+    export sudo=""
     perl=perl
+    # shellcheck disable=SC2016
     PERL_MAJOR_VERSION="$($perl -v | $perl -ne '/This is perl (\d+), version (\d+),/ && print "$1.$2"')"
+    export PERL_MAJOR_VERSION
 fi
 
+# shellcheck disable=SC1090
 . "$srcdir/excluded.sh"
 
 check(){
-    cmd=$1
-    msg=$2
-    if eval $cmd; then
+    cmd="$1"
+    msg="$2"
+    if eval "$cmd"; then
         echo "SUCCESS: $msg"
     else
         echo "FAILED: $msg"
