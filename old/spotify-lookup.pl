@@ -11,7 +11,7 @@
 #  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback
 #  to help improve or steer this or other code I publish
 #
-#  http://www.linkedin.com/in/harisekhon
+#  https://www.linkedin.com/in/HariSekhon
 #
 
 # Spotify changed early 2016 so this program has been superceded by a whole suite of Spotify tools in this
