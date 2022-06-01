@@ -23,12 +23,14 @@ echo "==========================================================================
 
 cd "$srcdir/..";
 
-. ./tests/utils.sh
+# shellcheck disable=SC1090
+. "$srcdir/utils.sh"
 
 for x in *.pl */*.pl; do
     isExcluded "$x" && continue
     #printf "%-50s" "$x:"
     #$perl -TWc $I_lib ./$x
+    # shellcheck disable=SC2154,SC2086
     $perl -Tc $I_lib ./$x
 done
 echo "================================================================================"
