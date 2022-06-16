@@ -1,5 +1,4 @@
-Spotify Tools
-=============
+# Spotify Tools
 
 [![GitHub stars](https://img.shields.io/github/stars/harisekhon/spotify-tools?logo=github)](https://github.com/HariSekhon/Spotify-tools/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/harisekhon/spotify-tools?logo=github)](https://github.com/HariSekhon/Spotify-tools/network)
