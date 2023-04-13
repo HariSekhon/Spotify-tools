@@ -1,5 +1,5 @@
 {
-  "id": "spotify-tools",
+  "id": "Spotify-tools",
   "plugin_id": "yaml.config.plugin",
   "material": {
     "type": "git",
