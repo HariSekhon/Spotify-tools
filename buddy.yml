@@ -24,7 +24,7 @@
   actions:
   - action: "Execute: make ci test"
     type: "BUILD"
-    working_directory: "/buddy/spotify-tools"
+    working_directory: "/buddy/Spotify-tools"
     docker_image_name: "library/ubuntu"
     docker_image_tag: "18.04"
     #setup_commands:
@@ -38,6 +38,6 @@
       - make ci
       - make test
     volume_mappings:
-      - "/:/buddy/spotify-tools"
+      - "/:/buddy/Spotify-tools"
     shell: "BASH"
     trigger_condition: "ALWAYS"
