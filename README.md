@@ -342,3 +342,5 @@ If you update often and want to just quickly git pull + submodule update but ski
 - [Kubernetes configs](https://github.com/HariSekhon/Kubernetes-configs) - Kubernetes YAML configs - Best Practices, Tips & Tricks are baked right into the templates for future deployments
 
 - [Terraform](https://github.com/HariSekhon/Terraform) - Terraform templates for AWS / GCP / Azure / GitHub management
+
+- [Diagrams-as-Code](https://github.com/HariSekhon/Diagrams-as-Code) - Cloud & Open Source architecture diagrams with Python source code provided - automatically regenerated via GitHub Actions CI/CD - AWS, GCP, Kubernetes, ArgoCD, Kong API Gateway, Nginx, Redis, PostgreSQL, Kafka, Spark, web farms, event processing...
