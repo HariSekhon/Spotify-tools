@@ -11,6 +11,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=security_rating)](https://sonarcloud.io/dashboard?id=HariSekhon_Spotify-tools)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=HariSekhon_Spotify-tools&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=HariSekhon_Spotify-tools)
 [![Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux)](https://github.com/HariSekhon/Spotify-tools#spotify-tools)
 [![Mac](https://img.shields.io/badge/OS-Mac-blue?logo=apple)](https://github.com/HariSekhon/Spotify-tools#spotify-tools)
 
