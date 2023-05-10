@@ -94,7 +94,7 @@ Cloud & Big Data Architect, United Kingdom
 
 ### Inventory
 
-- ```bash-tools/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
+- ```bash-tools/spotify/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
   - list all public playlists for any given user, even followed playlists
   - list all private playlists for the currently authorized user
   - backup all playlists or a selection of playlists by partial name or ID
@@ -156,7 +156,7 @@ As it progresses, it outputs the playlist name followed by the progress of the U
 `playlists/spotify/` files contain the Spotify URI format (for restores or copying to new playlists)
 
 ```
-./bash-tools/spotify_backup.sh
+./bash-tools/spotify/spotify_backup.sh
 ================================================================================
                          Running Spotify Playlists Backup
 ================================================================================
@@ -216,7 +216,7 @@ spotify:track:0RxFoUhB3mAI3qpgLSf7eM
 Then convert this to readable `Artist - Track` form for saving independently of Spotify but running `spotify_uri_to_name.sh` against the file:
 
 ```
-./bash-tools/spotify_uri_to_name.sh Pendulum.txt
+./bash-tools/spotify/spotify_uri_to_name.sh Pendulum.txt
 Pendulum - Watercolour
 Pendulum - Witchcraft
 Pendulum - The Island - Pt. I
@@ -226,10 +226,10 @@ Pendulum - The Island - Pt. I
 You can also pipe one or more Spotify URIs through standard input in either format that Spotify uses:
 
 ```
-echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify_uri_to_name.sh
+echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify/spotify_uri_to_name.sh
 Foo Fighters - Arlandria
 
-echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify_uri_to_name.sh
+echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify/spotify_uri_to_name.sh
 Foo Fighters - Arlandria
 ```
 
@@ -302,7 +302,7 @@ Then you will also need to fetch the following CPAN modules listed in `setup/cpa
 Running the cpan command followed by the list of modules (as root) will fetch them for you, or you can use this script:
 
 ```
-bash-tools/perl_cpanm_install.sh setup/cpan-requirements.txt lib/setup/cpan-requirements.txt
+bash-tools/perl/perl_cpanm_install.sh setup/cpan-requirements.txt lib/setup/cpan-requirements.txt
 ```
 
 ### Contributions ###
