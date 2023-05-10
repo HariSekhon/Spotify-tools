@@ -34,4 +34,4 @@ done < <(find . -name 'test*.sh')
 
 cd "$srcdir/.."
 
-bash-tools/check_all.sh
+bash-tools/checks/check_all.sh
