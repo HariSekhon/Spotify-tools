@@ -93,23 +93,23 @@ Cloud & Big Data Architect, United Kingdom
 [![Spotify Profile](https://img.shields.io/badge/Spotify%20Profile-HariSekhon-brightgreen?logo=spotify&style=social)](https://open.spotify.com/user/harisekhon)
 <br>*(you're welcome to connect with me on LinkedIn)*
 
-### Inventory
+## Inventory
 
 - ```bash-tools/spotify/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
-  - list all public playlists for any given user, even followed playlists
-  - list all private playlists for the currently authorized user
-  - backup all playlists or a selection of playlists by partial name or ID
-  - download playlist contents as Spotify URIs / `Artists - Track` / CSV format
-  - convert Spotify track URIs to human readable `Artist - Track` / CSV format
-  - iterate any command against all playlists - command can be templated with `{playlist}` name or `{playlist_id}` which will be auto-populated on each iteration
-  - convert a playlist name to an ID, or an ID to a playlist name
-  - search for tracks / artists / albums and output in either human readable form or as Spotify URIs for fast loading into the Spotify app or automated chaining with other adjacent tools
-  - list liked / top tracks / artists in either human readable form or as Spotify URIs
-  - generate a Spotify API token (used by all other bash scripts)
-  - query any Spotify API endpoint with authentication (used by all other bash scripts)
+- list all public playlists for any given user, even followed playlists
+- list all private playlists for the currently authorized user
+- backup all playlists or a selection of playlists by partial name or ID
+- download playlist contents as Spotify URIs / `Artists - Track` / CSV format
+- convert Spotify track URIs to human readable `Artist - Track` / CSV format
+- iterate any command against all playlists - command can be templated with `{playlist}` name or `{playlist_id}` which will be auto-populated on each iteration
+- convert a playlist name to an ID, or an ID to a playlist name
+- search for tracks / artists / albums and output in either human readable form or as Spotify URIs for fast loading into the Spotify app or automated chaining with other adjacent tools
+- list liked / top tracks / artists in either human readable form or as Spotify URIs
+- generate a Spotify API token (used by all other bash scripts)
+- query any Spotify API endpoint with authentication (used by all other bash scripts)
 - ```spotify-cmd.pl``` - Spotify desktop app control from the command line on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as auto-nexting tracks every N seconds if you want to skip through sampling a playlist
 
-### Quick Start ###
+## Quick Start
 
 If you want to recover an entire deleted playlist, you can do that quickly in the Spotify web interface -> Account -> [Recover Playlists](https://www.spotify.com/uk/account/recover-playlists/) page.
 
@@ -117,22 +117,25 @@ For deleted songs in the desktop app, you can immediately press Control + Shift 
 
 This repo is for everything else - Backups, Conversions from HTTP URIs to readable `Artist - Track` format, tracking individual songs removed from playlists over time (if Spotify loses the rights to them they silently disappear and you won't notice if not Git revision controlling them like my repo [Spotify Playlists](https://github.com/harisekhon/spotify-playists) etc.
 
-#### Ready to run Docker image #####
+### Ready to run Docker image
 
 These programs and their pre-compiled dependencies can be found ready to run on [DockerHub](https://hub.docker.com/r/harisekhon/spotify-tools/).
 
 List all programs:
-```
+
+```shell
 docker run harisekhon/spotify-tools
 ```
+
 Run any given program:
-```
+
+```shell
 docker run harisekhon/spotify-tools <program> <args>
 ```
 
-#### Automated Build from source #####
+### Automated Build from source
 
-```
+```shell
 git clone https://github.com/HariSekhon/Spotify-tools
 cd spotify-tools
 make
@@ -156,8 +159,8 @@ As it progresses, it outputs the playlist name followed by the progress of the U
 
 `playlists/spotify/` files contain the Spotify URI format (for restores or copying to new playlists)
 
-```
-./bash-tools/spotify/spotify_backup.sh
+```shell
+$ ./bash-tools/spotify/spotify_backup.sh
 ================================================================================
                          Running Spotify Playlists Backup
 ================================================================================
@@ -202,13 +205,16 @@ Chill => URIs OK => Tracks OK
 ### Convert Spotify URIs to Human readable Artist - Track
 
 You can copy and paste the tracks from the Spotify desktop app or web player directly into text files, which puts them in Spotify URI format such as:
-```
+
+```none
 http://open.spotify.com/track/61oGXsKgJOI0e3uS2wg1BV
 http://open.spotify.com/track/1j6API7GnhE8MRRedK4bda
 http://open.spotify.com/track/0RxFoUhB3mAI3qpgLSf7eM
 ```
+
 or
-```
+
+```none
 spotify:track:61oGXsKgJOI0e3uS2wg1BV
 spotify:track:1j6API7GnhE8MRRedK4bda
 spotify:track:0RxFoUhB3mAI3qpgLSf7eM
@@ -216,8 +222,8 @@ spotify:track:0RxFoUhB3mAI3qpgLSf7eM
 
 Then convert this to readable `Artist - Track` form for saving independently of Spotify but running `spotify_uri_to_name.sh` against the file:
 
-```
-./bash-tools/spotify/spotify_uri_to_name.sh Pendulum.txt
+```shell
+$ ./bash-tools/spotify/spotify_uri_to_name.sh Pendulum.txt
 Pendulum - Watercolour
 Pendulum - Witchcraft
 Pendulum - The Island - Pt. I
@@ -226,8 +232,8 @@ Pendulum - The Island - Pt. I
 
 You can also pipe one or more Spotify URIs through standard input in either format that Spotify uses:
 
-```
-echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify/spotify_uri_to_name.sh
+```shell
+$ echo http://open.spotify.com/track/5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify/spotify_uri_to_name.sh
 Foo Fighters - Arlandria
 
 echo spotify:track:5TOYgNohZAFEPOtnchPhZS | ./bash-tools/spotify/spotify_uri_to_name.sh
@@ -237,20 +243,21 @@ Foo Fighters - Arlandria
 ### Set all the tracks from your favourite playlist to "Liked"
 
 Give the playlist file full of Spotify URIs (dumped by the spotify_backup*.sh scripts above), you can mark all the songs from your favourite playlists as `Liked Songs` which then appear in your `Liked Songs` playlist too:
-```
+
+```shell
 spotify_set_tracks_uri_to_liked.sh playlists/spotify/My_Favourite_Playlist
 ```
 
 If you've been using Spotify a long time, you'll remember that marked songs used to be called `Starred`, but were replaced by `Liked Songs`. Unfortunately Spotify made `Starred` a regular playlist and didn't carry them over, but you can easily mark all previously `Starred` songs as the newer `Liked Songs`:
 
-```
+```shell
 spotify_set_tracks_uri_to_liked.sh playlists/spotify/Starred
 ```
 
-### Spotify Cmd --help ###
+### Spotify Cmd --help
 
-```
-./spotify-cmd.pl --help
+```shell
+$ ./spotify-cmd.pl --help
 
 Command line interface to Spotify on Mac that leverages AppleScript
 
@@ -287,11 +294,11 @@ exit / quit     Exit Spotify
 -V  --version    Print version and exit
 ```
 
-#### Manual Setup ####
+### Manual Setup
 
 Enter the directory and run git submodule init and git submodule update to fetch my library repo:
 
-```
+```shell
 git clone https://github.com/HariSekhon/Spotify-tools
 cd spotify-tools
 git submodule init
@@ -302,53 +309,96 @@ Then you will also need to fetch the following CPAN modules listed in `setup/cpa
 
 Running the cpan command followed by the list of modules (as root) will fetch them for you, or you can use this script:
 
-```
+```shell
 bash-tools/perl/perl_cpanm_install.sh setup/cpan-requirements.txt lib/setup/cpan-requirements.txt
 ```
 
-### Contributions ###
+### Contributions
 
 Patches, improvements and even general feedback are welcome in the form of GitHub pull requests and issue tickets.
 
-### Updating ###
+### Updating
 
-Run ```make update```. This will git pull and then git submodule update which is necessary to pick up corresponding library updates.
+Run:
+
+```shell
+make update
+```
+
+This will git pull and then git submodule update which is necessary to pick up corresponding library updates.
 ndencies.
 
 If you update often and want to just quickly git pull + submodule update but skip rebuilding all those dependencies each time then run ```make update-no-recompile``` (will miss new library dependencies - do full ```make update``` if you encounter issues).
 
 [git.io/spotify](https://git.io/spotify)
 
-## Related Repositories
+## More Core Repos
 
-- [DevOps Bash Tools](https://github.com/HariSekhon/DevOps-Bash-tools) - 1000+ DevOps Bash Scripts, Advanced `.bashrc`, `.vimrc`, `.screenrc`, `.tmux.conf`, `.gitconfig`, CI configs & Utility Code Library - AWS, GCP, Kubernetes, Docker, Kafka, Hadoop, SQL, BigQuery, Hive, Impala, PostgreSQL, MySQL, LDAP, DockerHub, Jenkins, Spotify API & MP3 tools, Git tricks, GitHub API, GitLab API, BitBucket API, Code & build linting, package management for Linux / Mac / Python / Perl / Ruby / NodeJS / Golang, and lots more random goodies
+<!-- OTHER_REPOS_START -->
 
-- [DevOps Python Tools](https://github.com/HariSekhon/DevOps-Python-tools) - 80+ DevOps CLI tools for AWS, GCP, Hadoop, HBase, Spark, Log Anonymizer, Ambari Blueprints, AWS CloudFormation, Linux, Docker, Spark Data Converters & Validators (Avro / Parquet / JSON / CSV / INI / XML / YAML), Elasticsearch, Solr, Travis CI, Pig, IPython
+### Knowledge
 
-- [DevOps Perl Tools](https://github.com/harisekhon/perl-tools) - 25+ DevOps CLI tools for Hadoop, HDFS, Hive, Solr/SolrCloud CLI, Log Anonymizer, Nginx stats & HTTP(S) URL watchers for load balanced web farms, Dockerfiles & SQL ReCaser (MySQL, PostgreSQL, AWS Redshift, Snowflake, Apache Drill, Hive, Impala, Cassandra CQL, Microsoft SQL Server, Oracle, Couchbase N1QL, Dockerfiles, Pig Latin, Neo4j, InfluxDB), Ambari FreeIPA Kerberos, Datameer, Linux...
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Knowledge-Base&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Knowledge-Base)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Diagrams-as-Code&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Diagrams-as-Code)
 
-- [The Advanced Nagios Plugins Collection](https://github.com/HariSekhon/Nagios-Plugins) - 450+ programs for Nagios monitoring your Hadoop & NoSQL clusters. Covers every Hadoop vendor's management API and every major NoSQL technology (HBase, Cassandra, MongoDB, Elasticsearch, Solr, Riak, Redis etc.) as well as message queues (Kafka, RabbitMQ), continuous integration (Jenkins, Travis CI) and traditional infrastructure (SSL, Whois, DNS, Linux)
+<!--
 
-- [Nagios Plugin Kafka](https://github.com/HariSekhon/Nagios-Plugin-Kafka) - Kafka API pub/sub Nagios Plugin written in Scala with Kerberos support
+Not support on GitHub Markdown:
 
-- [HAProxy Configs](https://github.com/HariSekhon/HAProxy-configs) - 80+ HAProxy Configs for Hadoop, Big Data, NoSQL, Docker, Elasticsearch, SolrCloud, HBase, Cloudera, Hortonworks, MapR, MySQL, PostgreSQL, Apache Drill, Hive, Presto, Impala, ZooKeeper, OpenTSDB, InfluxDB, Prometheus, Kibana, Graphite, SSH, RabbitMQ, Redis, Riak, Rancher etc.
+<iframe src="https://raw.githubusercontent.com/HariSekhon/HariSekhon/main/knowledge.md" width="100%" height="500px"></iframe>
 
-- [Dockerfiles](https://github.com/HariSekhon/Dockerfiles) - 50+ DockerHub public images for Docker & Kubernetes - Hadoop, Kafka, ZooKeeper, HBase, Cassandra, Solr, SolrCloud, Presto, Apache Drill, Nifi, Spark, Mesos, Consul, Riak, OpenTSDB, Jython, Advanced Nagios Plugins & DevOps Tools repos on Alpine, CentOS, Debian, Fedora, Ubuntu, Superset, H2O, Serf, Alluxio / Tachyon, FakeS3
+Does nothing:
 
-- [HashiCorp Packer templates](https://github.com/HariSekhon/Packer-templates) - Linux automated bare-metal installs and portable virtual machines OVA format appliances using HashiCorp Packer, Redhat Kickstart, Debian Preseed and Ubuntu AutoInstaller / Cloud-Init
+<embed src="https://raw.githubusercontent.com/HariSekhon/HariSekhon/main/knowledge.md" width="100%" height="500px" />
 
-- [SQL Scripts](https://github.com/HariSekhon/SQL-scripts) - 100+ SQL Scripts - PostgreSQL, MySQL, AWS Athena, Google BigQuery
+-->
 
-- [Jenkins](https://github.com/HariSekhon/Jenkins) - Advanced Jenkinsfile & Jenkins Groovy Shared Library
+### DevOps Code
 
-- [GitHub-Actions](https://github.com/HariSekhon/GitHub-Actions) - GitHub Actions master template & GitHub Actions Shared Workflows library
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=DevOps-Bash-tools&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/DevOps-Bash-tools)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=DevOps-Python-tools&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/DevOps-Python-tools)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=DevOps-Perl-tools&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/DevOps-Perl-tools)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=DevOps-Golang-tools&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/DevOps-Golang-tools)
 
-- [Templates](https://github.com/HariSekhon/Templates) - dozens of Code & Config templates - AWS, GCP, Docker, Jenkins, Terraform, Vagrant, Puppet, Python, Bash, Go, Perl, Java, Scala, Groovy, Maven, SBT, Gradle, Make, GitHub Actions Workflows, CircleCI, Jenkinsfile, Makefile, Dockerfile, docker-compose.yml, M4 etc.
+<!--
+[![Gist Card](https://github-readme-stats.vercel.app/api/gist?id=f8f551332440f1ca8897ff010e363e03)](https://gist.github.com/HariSekhon/f8f551332440f1ca8897ff010e363e03)
+-->
 
-- [Kubernetes configs](https://github.com/HariSekhon/Kubernetes-configs) - Kubernetes YAML configs - Best Practices, Tips & Tricks are baked right into the templates for future deployments
+### Containerization
 
-- [Terraform](https://github.com/HariSekhon/Terraform) - Terraform templates for AWS / GCP / Azure / GitHub management
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Kubernetes-configs&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Kubernetes-configs)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Dockerfiles&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Dockerfiles)
 
-- [Diagrams-as-Code](https://github.com/HariSekhon/Diagrams-as-Code) - Cloud & Open Source architecture diagrams with Python & D2 source code provided - automatically regenerated via GitHub Actions CI/CD - AWS, GCP, Kubernetes, Jenkins, ArgoCD, Traefik, Kong API Gateway, Nginx, Redis, PostgreSQL, Kafka, Spark, web farms, event processing...
+### CI/CD
 
-- [Knowledge-Base](https://github.com/HariSekhon/Knowledge-Base) - IT Knowledge Base from 20 years in DevOps, Linux, Cloud, Big Data, AWS, GCP etc.
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=GitHub-Actions&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/GitHub-Actions)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Jenkins&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Jenkins)
+
+### DBA - SQL
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=SQL-scripts&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/SQL-scripts)
+
+### DevOps Reloaded
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Nagios-Plugins&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Nagios-Plugins)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=HAProxy-configs&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/HAProxy-configs)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Templates&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Templates)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Terraform&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Terraform)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Packer-templates&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Packer-templates)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Nagios-Plugin-Kafka&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Nagios-Plugin-Kafka)
+
+### Misc
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Template-repo&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Template-repo)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Spotify-tools&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Spotify-tools)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Spotify-playlists&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Spotify-playlists)
+
+The rest of my original source repos are
+[here](https://github.com/HariSekhon?tab=repositories&q=&type=source&language=&sort=stargazers).
+
+Pre-built Docker images are available on my [DockerHub](https://hub.docker.com/u/harisekhon/).
+
+<!-- 1x1 pixel counter to record hits -->
+![](https://hit.yhype.me/github/profile?user_id=2211051)
+
+<!-- OTHER_REPOS_END -->
