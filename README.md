@@ -95,19 +95,19 @@ Cloud & Big Data Architect, United Kingdom
 
 ## Inventory
 
-- ```bash-tools/spotify/spotify_*.sh``` - [Spotify](https://www.spotify.com/) API scripts
-- list all public playlists for any given user, even followed playlists
-- list all private playlists for the currently authorized user
-- backup all playlists or a selection of playlists by partial name or ID
-- download playlist contents as Spotify URIs / `Artists - Track` / CSV format
-- convert Spotify track URIs to human readable `Artist - Track` / CSV format
-- iterate any command against all playlists - command can be templated with `{playlist}` name or `{playlist_id}` which will be auto-populated on each iteration
-- convert a playlist name to an ID, or an ID to a playlist name
-- search for tracks / artists / albums and output in either human readable form or as Spotify URIs for fast loading into the Spotify app or automated chaining with other adjacent tools
-- list liked / top tracks / artists in either human readable form or as Spotify URIs
-- generate a Spotify API token (used by all other bash scripts)
-- query any Spotify API endpoint with authentication (used by all other bash scripts)
-- ```spotify-cmd.pl``` - Spotify desktop app control from the command line on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as auto-nexting tracks every N seconds if you want to skip through sampling a playlist
+- bash-tools/spotify/spotify_*.sh` - [Spotify](https://www.spotify.com/) API scripts
+  - list all public playlists for any given user, even followed playlists
+  - list all private playlists for the currently authorized user
+  - backup all playlists or a selection of playlists by partial name or ID
+  - download playlist contents as Spotify URIs / `Artists - Track` / CSV format
+  - convert Spotify track URIs to human readable `Artist - Track` / CSV format
+  - iterate any command against all playlists - command can be templated with `{playlist}` name or `{playlist_id}` which will be auto-populated on each iteration
+  - convert a playlist name to an ID, or an ID to a playlist name
+  - search for tracks / artists / albums and output in either human readable form or as Spotify URIs for fast loading into the Spotify app or automated chaining with other adjacent tools
+  - list liked / top tracks / artists in either human readable form or as Spotify URIs
+  - generate a Spotify API token (used by all other bash scripts)
+  - query any Spotify API endpoint with authentication (used by all other bash scripts)
+- `spotify-cmd.pl` - Spotify desktop app control from the command line on Mac via AppleScript calls. Useful for automation that Mac HotKeys don't help with such as auto-nexting tracks every N seconds if you want to skip through sampling a playlist
 
 ## Quick Start
 
@@ -200,7 +200,7 @@ Chill => URIs OK => Tracks OK
 2017 06 June Mix - Johannesburg => URIs OK => Tracks OK
 ...
 2020-07-05 01:41:42  Spotify playlists backup finished in 1078 seconds
-````
+```
 
 ### Convert Spotify URIs to Human readable Artist - Track
 
@@ -328,7 +328,9 @@ make update
 This will git pull and then git submodule update which is necessary to pick up corresponding library updates.
 ndencies.
 
-If you update often and want to just quickly git pull + submodule update but skip rebuilding all those dependencies each time then run ```make update-no-recompile``` (will miss new library dependencies - do full ```make update``` if you encounter issues).
+If you update often and want to just quickly git pull + submodule update but skip rebuilding all those dependencies each
+time then run `make update-no-recompile` (will miss new library dependencies - do full `make update` if you encounter
+issues).
 
 [git.io/spotify](https://git.io/spotify)
 
