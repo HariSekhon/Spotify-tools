@@ -314,6 +314,7 @@ bash-tools/perl/perl_cpanm_install.sh setup/cpan-requirements.txt lib/setup/cpan
 ```
 
 ### Contributions
+[![Open in DevZero](https://assets.devzero.io/open-in-devzero.svg)](https://www.devzero.io/dashboard/recipes/new?repo-url=https://github.com/HariSekhon/Spotify-tools)
 
 Patches, improvements and even general feedback are welcome in the form of GitHub pull requests and issue tickets.
 
