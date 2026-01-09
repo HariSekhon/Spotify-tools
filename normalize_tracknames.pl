@@ -93,7 +93,7 @@ sub normalize ($) {
             Single|
             Uncut|
             from|
-            (?:\w+\s+)?theme\s+from|
+            (?:\w+\s+)?(?:music|theme)\s+from|
             Stereo|
             Studio Recording|
             Mono|
