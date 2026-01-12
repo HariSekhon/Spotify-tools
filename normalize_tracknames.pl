@@ -94,7 +94,7 @@ sub normalize ($) {
             Uncut|
             from|
             (?:\w+\s+)?(?:music|theme)\s+from|
-            \(From .+ The Movie\)|
+            \(From .+ The (?:Movie|Motion Picture)|
             Stereo|
             Studio Recording|
             Mono|
