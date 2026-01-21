@@ -62,7 +62,7 @@ sub normalize ($) {
     s/^([ +-])//;
     my $diff = $1 ? $1 : "";
     # original track name normalization
-    s/^The //i;
+    #s/^The //i;
     s/\s+(?:-\s+(?:\(|")?|\(|\[)
         (?:
             (?:
