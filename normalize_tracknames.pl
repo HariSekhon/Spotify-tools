@@ -17,7 +17,7 @@
 
 $DESCRIPTION="Normalize Track Names removing edit/version tags";
 
-$VERSION="0.3";
+$VERSION="0.3.1";
 
 use strict;
 use warnings;
