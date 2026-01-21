@@ -62,6 +62,7 @@ sub normalize ($) {
     s/^([ +-])//;
     my $diff = $1 ? $1 : "";
     # original track name normalization
+    # This truncates artist names, don't do this - eg. in spotify_playlist_top_artists.sh we want 'The Who', not 'Who'
     #s/^The //i;
     s/\s+(?:-\s+(?:\(|")?|\(|\[)
         (?:
