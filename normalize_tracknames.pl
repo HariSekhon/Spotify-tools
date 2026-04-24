@@ -77,7 +77,7 @@ sub normalize ($) {
             (?:Digital(?:ly)?\s|Re-recorded\s+\/\s+)?Re-?master(?:ed)?|
             \d{4}\s+Re-?master(?:ed)?|
             Re-?mastered\s+\d{4}|
-            (?:Radio|Final|Main|Dirty)(?:\s+Edit)?(?:\s+Version)?$|
+            (?:Radio|Final|Main|Dirty)\s+(?:Edit|Version|Mix)$|
             (?:LP\s*\/?\s*)?(?:\w+)?(?:'|")?(?:\w+)?\s+Version|
             (?:Mainstream\s+|Re-)?Edit|
             (?:as )?made\s+famous|
@@ -94,9 +94,9 @@ sub normalize ($) {
             Radio|
             Single|
             Uncut|
-            from|
             (?:\w+\s+)?(?:music|theme)\s+from|
             \(From .+ The (?:Movie|Motion Picture)|
+            from|
             Stereo|
             Studio Recording|
             Mono|
