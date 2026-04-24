@@ -17,7 +17,7 @@
 
 $DESCRIPTION="Normalize Track Names removing edit/version tags";
 
-$VERSION="0.3.1";
+$VERSION="0.3.2";
 
 use strict;
 use warnings;
@@ -77,6 +77,7 @@ sub normalize ($) {
             (?:Digital(?:ly)?\s|Re-recorded\s+\/\s+)?Re-?master(?:ed)?|
             \d{4}\s+Re-?master(?:ed)?|
             Re-?mastered\s+\d{4}|
+            (?:Radio|Final|Main|Dirty)(?:\s+Edit)?(?:\s+Version)?$|
             (?:LP\s*\/?\s*)?(?:\w+)?(?:'|")?(?:\w+)?\s+Version|
             (?:Mainstream\s+|Re-)?Edit|
             (?:as )?made\s+famous|
